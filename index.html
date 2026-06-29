@@ -188,7 +188,12 @@
   .cbot-launcher .cat-svg{width:50px;height:50px;}
   .cbot-launcher-pulse{position:absolute;inset:0;border-radius:50%;border:2px solid var(--blue);opacity:0;animation:cbotPulse 2.8s ease-out infinite;}
   @keyframes cbotPulse{0%{transform:scale(1);opacity:.5;}70%{transform:scale(1.45);opacity:0;}100%{opacity:0;}}
-  .cbot-launcher.hide{transform:scale(0);opacity:0;pointer-events:none;}
+  .cbot-launcher .cbot-cat,.cbot-launcher .cbot-launcher-x{transition:opacity .2s,transform .25s;}
+  .cbot-launcher .cbot-launcher-x{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transform:rotate(-90deg) scale(.6);}
+  .cbot-launcher .cbot-launcher-x svg{width:26px;height:26px;stroke:#fff;fill:none;stroke-width:2.4;stroke-linecap:round;}
+  .cbot-launcher.open .cbot-cat{opacity:0;transform:rotate(90deg) scale(.6);}
+  .cbot-launcher.open .cbot-launcher-x{opacity:1;transform:rotate(0) scale(1);}
+  .cbot-launcher.open .cbot-launcher-pulse{display:none;}
 
   /* 후킹 말풍선 */
   .cbot-bubble{position:absolute;right:78px;bottom:6px;width:236px;background:var(--paper);border:1px solid var(--line-strong);box-shadow:0 16px 40px rgba(20,20,20,0.14);padding:16px 17px;opacity:0;visibility:hidden;transform:translateY(8px) scale(.96);transform-origin:bottom right;transition:opacity .3s,transform .3s,visibility .3s;}
@@ -200,7 +205,7 @@
   .cbot-bubble-close:hover{color:var(--ink);}
   @media(max-width:520px){.cbot-bubble{display:none;}}
 
-  .cbot-panel{position:absolute;right:0;bottom:80px;width:360px;max-width:calc(100vw - 40px);background:var(--paper);border:1px solid var(--line-strong);box-shadow:0 30px 70px rgba(20,20,20,0.26);display:flex;flex-direction:column;overflow:hidden;opacity:0;visibility:hidden;transform:translateY(18px) scale(.97);transform-origin:bottom right;transition:opacity .28s,transform .28s,visibility .28s;}
+  .cbot-panel{position:absolute;right:0;bottom:80px;width:360px;max-width:calc(100vw - 40px);height:540px;max-height:calc(100vh - 120px);background:var(--paper);border:1px solid var(--line-strong);box-shadow:0 30px 70px rgba(20,20,20,0.26);display:flex;flex-direction:column;overflow:hidden;opacity:0;visibility:hidden;transform:translateY(18px) scale(.97);transform-origin:bottom right;transition:opacity .28s,transform .28s,visibility .28s;}
   .cbot-panel.open{opacity:1;visibility:visible;transform:translateY(0) scale(1);}
 
   /* header — 오프화이트 배경, 잉크블루 텍스트 (고양이 가시성 확보) */
@@ -216,7 +221,7 @@
   .cbot-close:hover{color:var(--ink);}
   .cbot-close svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:2;}
 
-  .cbot-body{padding:20px 18px;display:flex;flex-direction:column;gap:12px;height:320px;overflow-y:auto;background:var(--paper-2);}
+  .cbot-body{padding:20px 18px;display:flex;flex-direction:column;gap:12px;flex:1 1 auto;min-height:0;overflow-y:auto;background:var(--paper-2);}
   .cbot-body::-webkit-scrollbar{width:5px;}
   .cbot-body::-webkit-scrollbar-thumb{background:var(--line-strong);border-radius:3px;}
   .cbot-row{display:flex;gap:9px;align-items:flex-end;max-width:90%;}
@@ -253,10 +258,19 @@
   .cbot-send.end{background:var(--ink);}
   .cbot-send.end:hover{background:#000;}
 
+  /* 태블릿 */
+  @media(max-width:820px) and (min-width:521px){
+    .cbot-panel{width:380px;max-height:calc(100vh - 130px);}
+    .cbot-body{max-height:none;}
+  }
+  /* 모바일: 거의 전체화면 시트 */
   @media(max-width:520px){
-    .cbot{right:16px;bottom:16px;}
-    .cbot-panel{bottom:78px;width:calc(100vw - 32px);}
-    .cbot-body{height:54vh;}
+    .cbot{right:14px;bottom:14px;}
+    .cbot-panel{position:fixed;right:12px;left:12px;bottom:12px;top:12px;width:auto;height:auto;max-width:none;max-height:none;transform-origin:bottom center;}
+    .cbot-panel.open{transform:translateY(0) scale(1);}
+    .cbot-body{flex:1 1 auto;min-height:0;max-height:none;}
+    .cbot-header{padding:16px 16px;}
+    .cbot-form{padding:14px 16px 8px;}
   }
   footer{background:var(--ink);color:#777;text-align:center;padding:40px;font-family:var(--mono);font-size:0.76rem;letter-spacing:0.04em;}
 
@@ -651,6 +665,7 @@
         <path d="M18 44 Q23 44 26 45 M17 49 Q22 49 25 49 M62 44 Q57 44 54 45 M63 49 Q58 49 55 49" stroke="#fff" stroke-width="1" opacity="0.6" fill="none" stroke-linecap="round"/>
       </svg>
     </span>
+    <span class="cbot-launcher-x" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg></span>
     <span class="cbot-launcher-pulse" aria-hidden="true"></span>
   </button>
 
@@ -777,11 +792,12 @@
 
     var greeted=false;
     function openPanel(){
-      panel.classList.add('open');panel.setAttribute('aria-hidden','false');launcher.classList.add('hide');hideBubble();
+      panel.classList.add('open');panel.setAttribute('aria-hidden','false');launcher.classList.add('open');launcher.setAttribute('aria-label','챗봇 닫기');hideBubble();
       if(!greeted){greeted=true;runGreeting();}
     }
-    function closePanel(){panel.classList.remove('open');panel.setAttribute('aria-hidden','true');launcher.classList.remove('hide');}
-    launcher.addEventListener('click',openPanel);
+    function closePanel(){panel.classList.remove('open');panel.setAttribute('aria-hidden','true');launcher.classList.remove('open');launcher.setAttribute('aria-label','챗봇 상담 열기');}
+    function togglePanel(){if(panel.classList.contains('open'))closePanel();else openPanel();}
+    launcher.addEventListener('click',togglePanel);
     closeB.addEventListener('click',closePanel);
 
     // 후킹 말풍선
