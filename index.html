@@ -127,11 +127,11 @@
   .exp-list{display:flex;flex-direction:column;gap:16px;}
   .exp{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--line);transition:border-color .25s,box-shadow .25s;}
   .exp.open{border-left-color:var(--blue);box-shadow:0 10px 30px rgba(20,20,20,0.06);}
-  .exp-head{width:100%;text-align:left;background:none;border:0;cursor:pointer;display:grid;grid-template-columns:1fr auto auto;gap:18px;align-items:center;padding:26px 30px;font-family:inherit;}
+  .exp-head{width:100%;text-align:left;background:none;border:0;cursor:pointer;display:grid;grid-template-columns:1fr auto auto;gap:18px;align-items:center;padding:26px 30px;font-family:inherit;color:var(--ink);-webkit-text-fill-color:currentColor;}
   .exp-head .ht{min-width:0;}
-  .exp-head .co{font-family:var(--serif);font-size:1.4rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:5px;}
+  .exp-head .co{font-family:var(--serif);font-size:1.4rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:5px;color:var(--ink);}
   .exp-head .exp-lead{font-size:0.93rem;color:var(--ink-2);font-weight:500;line-height:1.5;}
-  .exp.open .exp-head .exp-lead{color:var(--blue);}
+  .exp.open .exp-head .exp-lead{color:var(--blue);-webkit-text-fill-color:var(--blue);}
   .exp-head .meta{font-family:var(--mono);font-size:0.74rem;color:var(--ink-3);text-align:right;line-height:1.5;white-space:nowrap;}
   .exp-head .chev{width:22px;height:22px;stroke:var(--ink-3);fill:none;stroke-width:2;transition:transform .3s,stroke .25s;flex:0 0 auto;}
   .exp.open .exp-head .chev{transform:rotate(180deg);stroke:var(--blue);}
@@ -380,19 +380,19 @@
 
     <div class="kpi reveal">
       <div class="cell">
-        <div class="k-num"><span class="count" data-to="8" data-prefix="+">+0</span><span class="k-unit">%p</span></div>
+        <div class="k-num"><span class="count" data-to="8" data-prefix="+">+0</span><span class="k-unit" data-i18n="kpi.u1">%p</span></div>
         <div class="k-desc" data-i18n="kpi.1">SKT AI 서비스 시장 점유율 상승</div>
       </div>
       <div class="cell">
-        <div class="k-num"><span class="count" data-to="80">0</span><span class="k-unit">억</span></div>
+        <div class="k-num"><span class="count" data-to="80" data-to-en="8">0</span><span class="k-unit" data-i18n="kpi.u2">억</span></div>
         <div class="k-desc" data-i18n="kpi.2">디지털 전환으로 만든 연간 운영 효율화</div>
       </div>
       <div class="cell">
-        <div class="k-num"><span class="count" data-to="60">0</span><span class="k-unit">%↓</span></div>
+        <div class="k-num"><span class="count" data-to="60">0</span><span class="k-unit" data-i18n="kpi.u3">%↓</span></div>
         <div class="k-desc" data-i18n="kpi.3">AI 워크플로우로 단축한 기획 리드타임</div>
       </div>
       <div class="cell">
-        <div class="k-num"><span class="count" data-to="6" data-suffix="+">0</span><span class="k-unit">개국</span></div>
+        <div class="k-num"><span class="count" data-to="6" data-suffix="+">0</span><span class="k-unit" data-i18n="kpi.u4">개국</span></div>
         <div class="k-desc" data-i18n="kpi.4">FIFA 월드컵 거버넌스부터 글로벌 협업까지</div>
       </div>
     </div>
@@ -762,6 +762,7 @@
     "hero.cta2":"Email me",
 
     "kpi.1":"Market share gain for SKT's AI service",
+    "kpi.u1":"%p","kpi.u2":"B₩","kpi.u3":"%↓","kpi.u4":"",
     "kpi.2":"Annual operating savings from digital transformation",
     "kpi.3":"Cut in planning lead time via AI workflows",
     "kpi.4":"From FIFA World Cup governance to global field work",
@@ -994,12 +995,18 @@
   document.addEventListener('DOMContentLoaded',function(){setTimeout(showAll,100);});
   setTimeout(showAll,1500);
 
-  // KPI 카운트업 (화면 진입 시 한 번)
+  // KPI 카운트업 (화면 진입 시 한 번, 언어에 따라 타깃 변경)
   var counted=false;
+  function kpiTarget(el){
+    var en = (window.__cbotLang==='en');
+    var t = en && el.getAttribute('data-to-en')!=null
+              ? el.getAttribute('data-to-en') : el.getAttribute('data-to');
+    return parseInt(t,10)||0;
+  }
   function runCount(){
     if(counted)return;counted=true;
     document.querySelectorAll('.kpi .count').forEach(function(el){
-      var to=parseInt(el.getAttribute('data-to'),10)||0,
+      var to=kpiTarget(el),
           prefix=el.getAttribute('data-prefix')||'',
           suffix=el.getAttribute('data-suffix')||'',
           dur=1100,start=null;
@@ -1014,6 +1021,15 @@
       requestAnimationFrame(tick);
     });
   }
+  // 언어 변경 시 이미 카운트됐으면 최종값만 즉시 갱신
+  document.addEventListener('ckpf:lang',function(){
+    if(!counted)return;
+    document.querySelectorAll('.kpi .count').forEach(function(el){
+      var prefix=el.getAttribute('data-prefix')||'',
+          suffix=el.getAttribute('data-suffix')||'';
+      el.textContent=prefix+kpiTarget(el)+suffix;
+    });
+  });
   var kpiEl=document.querySelector('.kpi');
   if(kpiEl&&'IntersectionObserver' in window){
     var kio=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){runCount();kio.disconnect();}});},{threshold:0.35});
