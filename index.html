@@ -81,8 +81,9 @@
   .hero-top{display:grid;grid-template-columns:1.15fr 1fr;gap:72px;align-items:start;padding-bottom:60px;}
   .hero .eyebrow{display:block;margin-bottom:20px;}
   .hero h1{font-family:var(--serif);font-size:clamp(2.6rem,6.5vw,5rem);font-weight:800;letter-spacing:-0.045em;line-height:1.06;}
+  html[lang="en"] .hero h1{font-size:clamp(2.3rem,5.4vw,4.25rem);}
   .hero h1 em{font-style:normal;color:var(--blue);}
-  .hero-right{padding-top:8px;}
+  .hero-right{padding-top:38px;}
   .hero-right .tagline{font-family:var(--serif);font-weight:700;font-size:clamp(1.2rem,2.2vw,1.55rem);color:var(--ink);margin-bottom:22px;line-height:1.45;letter-spacing:-0.02em;}
   .hero-right .lead{font-size:1rem;color:var(--ink-2);line-height:1.7;margin-bottom:12px;}
   .hero-right .lead strong{color:var(--ink);font-weight:600;}
@@ -117,8 +118,8 @@
   .about-body p.lead-line{font-family:var(--serif);font-size:clamp(1.25rem,2.3vw,1.55rem);color:var(--ink);line-height:1.5;font-weight:700;letter-spacing:-0.025em;}
   .about-body strong{color:var(--ink);font-weight:600;}
   .pillars{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--line);}
-  .pillar{padding:24px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:baseline;transition:padding-left .25s;}
-  .pillar:hover{padding-left:10px;}
+  .pillar{padding:24px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:baseline;transition:transform .25s;}
+  .pillar:hover{transform:translateX(10px);}
   .pillar .pn{font-family:var(--mono);font-size:0.74rem;color:var(--blue);letter-spacing:0.08em;}
   .pillar h4{font-family:var(--serif);font-size:1.18rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:7px;}
   .pillar p{font-size:0.94rem;color:var(--ink-2);line-height:1.6;}
@@ -149,6 +150,9 @@
   .proj-context b{color:var(--ink);font-weight:600;}
   .badges{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px;}
   .exp-grid-2 .badges{min-height:58px;align-content:flex-start;}
+  /* 영문은 텍스트가 길어 좌우 칼럼 높이를 별도 조정 (왼쪽 기준 정렬) */
+  html[lang="en"] .exp-grid-2 .proj-context{min-height:100px;}
+  html[lang="en"] .exp-grid-2 .badges{min-height:66px;}
   .badge{font-family:var(--mono);font-size:0.74rem;font-weight:500;padding:5px 11px;background:var(--blue-soft);color:var(--blue);letter-spacing:0.01em;}
   .proj ul{list-style:none;}
   .proj li{position:relative;padding-left:18px;font-size:0.93rem;color:var(--ink-2);margin-bottom:10px;line-height:1.6;}
@@ -309,6 +313,7 @@
   /* RESPONSIVE */
   @media (max-width:920px){
     .hero-top{grid-template-columns:1fr;gap:34px;}
+    .hero-right{padding-top:0;}
     .about-grid{grid-template-columns:1fr;gap:40px;}
     .exp-grid-2{grid-template-columns:1fr;gap:24px;}
     .skills-grid{grid-template-columns:1fr 1fr;}
@@ -384,7 +389,7 @@
         <div class="k-desc" data-i18n="kpi.1">SKT AI 서비스 시장 점유율 상승</div>
       </div>
       <div class="cell">
-        <div class="k-num"><span class="count" data-to="80" data-to-en="8">0</span><span class="k-unit" data-i18n="kpi.u2">억</span></div>
+        <div class="k-num"><span class="count" data-to="80" data-to-en="6" data-prefix-en="$">0</span><span class="k-unit" data-i18n="kpi.u2">억</span></div>
         <div class="k-desc" data-i18n="kpi.2">디지털 전환으로 만든 연간 운영 효율화</div>
       </div>
       <div class="cell">
@@ -413,9 +418,9 @@
         <p data-i18n-html="about.p2">대한축구협회와 FIFA 개최지 선정식에서 다진 <strong>글로벌 이해관계자 조율 경험</strong>, SKT에서 쌓은 <strong>AI 서비스 설계 역량</strong>, 스타트업에서 증명한 <strong>고속 실행력</strong>이 지금의 방식을 만들었습니다. 최근에는 LLM 워크플로우를 기획에 결합해 운영 속도를 끌어올렸지만, 이는 결과를 만드는 방식이 아니라 그 사이클을 더 빠르게 돌리는 도구입니다.</p>
       </div>
       <div class="pillars reveal">
-        <div class="pillar"><div class="pn">01</div><div><h4 data-i18n="pillar.1.t">전략적 문제 정의</h4><p data-i18n="pillar.1.d">물리적 운영 리스크(물류, CS, 제조)를 소프트웨어로 대체하는 구조를 설계하고, 비용 효율과 확장성을 함께 고민합니다.</p></div></div>
+        <div class="pillar"><div class="pn">01</div><div><h4 data-i18n="pillar.1.t">전략적 문제 정의</h4><p data-i18n="pillar.1.d">물리적 운영 리스크를 소프트웨어로 대체하는 구조를 설계하고, 비용 효율과 확장성을 함께 고민합니다.</p></div></div>
         <div class="pillar"><div class="pn">02</div><div><h4 data-i18n="pillar.2.t">AI 워크플로우 실행</h4><p data-i18n="pillar.2.d">Claude와 Base44를 연동한 파이프라인으로 PRD 작성과 동시에 인터랙티브 UI를 생성합니다. 기획 리드타임을 약 60% 단축했습니다.</p></div></div>
-        <div class="pillar"><div class="pn">03</div><div><h4 data-i18n="pillar.3.t">글로벌 협업과 거버넌스</h4><p data-i18n="pillar.3.d">2022 월드컵 유치위원회에서 스위스 취리히 FIFA 개최지 선정식, 영국 런던 국제 컨퍼런스, 남아공 월드컵 현장을 오가며 정부 부처와 글로벌 기관을 조율했습니다. 이후 주한미군 험프리스 캠프, 두바이 경찰청, DHL과 현지 협업과 기술 협의를 직접 이끌었습니다.</p></div></div>
+        <div class="pillar"><div class="pn">03</div><div><h4 data-i18n="pillar.3.t">글로벌 협업과 거버넌스</h4><p data-i18n="pillar.3.d">2022 월드컵 유치위원회에서 스위스 취리히 FIFA 개최지 선정식, 영국 런던 국제 컨퍼런스, 남아공 월드컵 현장을 오가며 정부 부처와 글로벌 기관을 조율했습니다. 이후 주한미군 험프리스 캠프, 두바이 경찰청, DHL 아시아 등 글로벌 비즈니스를 위해 현지에서 PoC를 진행했습니다.</p></div></div>
         <div class="pillar"><div class="pn">04</div><div><h4 data-i18n="pillar.4.t">데이터 기반 의사결정</h4><p data-i18n="pillar.4.d">SQL, GA, Amplitude로 대시보드를 직접 구축하고, 가설에서 A/B 테스트, 전환율 최적화까지 한 사이클을 돌립니다.</p></div></div>
       </div>
     </div>
@@ -609,15 +614,15 @@
       </div>
       <div class="skillcard reveal">
         <div class="sh"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div><h4>Data</h4></div>
-        <div class="chips"><span class="chip">SQL</span><span class="chip">Google Analytics</span><span class="chip">Amplitude</span><span class="chip">Power BI</span><span class="chip">로그 분석</span></div>
+        <div class="chips"><span class="chip">SQL</span><span class="chip">Google Analytics</span><span class="chip">Amplitude</span><span class="chip">Power BI</span><span class="chip" data-i18n="skill.data.log">로그 분석</span></div>
       </div>
       <div class="skillcard reveal">
-        <div class="sh"><div class="ic"><svg viewBox="0 0 24 24"><path d="M7 8l-4 4 4 4M17 8l4 4-4 4M14 4l-4 16"/></svg></div><h4>Tech Stack</h4></div>
-        <div class="chips"><span class="chip">Next.js</span><span class="chip">PostgreSQL</span><span class="chip">REST API</span><span class="chip">Toss Payments</span><span class="chip">Stripe</span></div>
+        <div class="sh"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div><h4>Collaboration</h4></div>
+        <div class="chips"><span class="chip">Jira</span><span class="chip">Confluence</span><span class="chip">Notion</span><span class="chip">Slack</span><span class="chip">Figma</span></div>
       </div>
       <div class="skillcard reveal">
-        <div class="sh"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.4"/><path d="M3 20c0-3 2.7-5 6-5s6 2 6 5M15 20c0-2.2 1.5-3.8 4-3.8s4 1.6 4 3.8"/></svg></div><h4>Collaboration</h4></div>
-        <div class="chips"><span class="chip">Jira</span><span class="chip">Confluence</span><span class="chip">Notion</span><span class="chip">Slack</span><span class="chip">영어 Business</span></div>
+        <div class="sh"><div class="ic"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg></div><h4>Communication</h4></div>
+        <div class="chips"><span class="chip" data-i18n="skill.comm.1">이해관계자 조율</span><span class="chip" data-i18n="skill.comm.2">크로스펑셔널 리딩</span><span class="chip" data-i18n="skill.comm.3">C-레벨 직속 협업</span><span class="chip" data-i18n="skill.comm.4">글로벌 커뮤니케이션</span><span class="chip" data-i18n="skill.comm.5">영어 비즈니스</span></div>
       </div>
     </div>
   </div>
@@ -762,7 +767,7 @@
     "hero.cta2":"Email me",
 
     "kpi.1":"Market share gain for SKT's AI service",
-    "kpi.u1":"%p","kpi.u2":"B₩","kpi.u3":"%↓","kpi.u4":"",
+    "kpi.u1":"%p","kpi.u2":"M","kpi.u3":"%↓","kpi.u4":"",
     "kpi.2":"Annual operating savings from digital transformation",
     "kpi.3":"Cut in planning lead time via AI workflows",
     "kpi.4":"From FIFA World Cup governance to global field work",
@@ -773,6 +778,12 @@
     "sec.exp.s":"Impact proven in numbers, solutions designed in structure.",
     "sec.skills.t":"Skills and tools",
     "sec.skills.s":"From product planning to data to AI workflows, all hands-on.",
+    "skill.data.log":"Log analysis",
+    "skill.comm.1":"Stakeholder alignment",
+    "skill.comm.2":"Cross-functional leadership",
+    "skill.comm.3":"Executive (C-level) partnership",
+    "skill.comm.4":"Global communication",
+    "skill.comm.5":"Business English",
     "sec.tl.t":"Career path",
     "sec.tl.s":"From sports administration and global governance to AI products.",
 
@@ -781,11 +792,11 @@
     "about.p2":"The way I work was shaped by three things: <strong>steering global stakeholders</strong> at the KFA and the FIFA host selection, <strong>designing AI services</strong> at SKT, and <strong>shipping fast</strong> in startups. Lately I've folded LLM workflows into planning to move quicker, but that's a tool to spin the cycle faster, not the thing that creates the result.",
 
     "pillar.1.t":"Strategic problem framing",
-    "pillar.1.d":"I design structures that replace physical operating risk (logistics, CS, manufacturing) with software, weighing cost efficiency and scalability together.",
+    "pillar.1.d":"I design structures that replace physical operating risk with software, weighing cost efficiency and scalability together.",
     "pillar.2.t":"Executing with AI workflows",
     "pillar.2.d":"A Claude + Base44 pipeline that generates interactive UI the moment a PRD is written. It cut planning lead time by roughly 60%.",
     "pillar.3.t":"Global collaboration and governance",
-    "pillar.3.d":"With the 2022 World Cup Bid Committee I worked the FIFA host selection in Zurich, an international conference in London, and the World Cup ground in South Africa, aligning government bodies and global institutions. Later I personally led on-site collaboration and technical talks with USFK Camp Humphreys, the Dubai Police, and DHL.",
+    "pillar.3.d":"With the 2022 World Cup Bid Committee I worked the FIFA host selection in Zurich, an international conference in London, and the World Cup ground in South Africa, aligning government bodies and global institutions. Since then, I've run on-site PoCs for global business with partners like USFK Camp Humphreys, the Dubai Police, and DHL Asia.",
     "pillar.4.t":"Decisions grounded in data",
     "pillar.4.d":"I build dashboards myself with SQL, GA, and Amplitude, and run the full loop from hypothesis to A/B test to conversion optimization.",
 
@@ -797,7 +808,7 @@
     "e.ds.p1.t":"'Selly', the AI sales agent",
     "e.ds.p1.c":"I turned a product that only collected leads into <b>an AI agent that responds the way a real sales rep would talk to a customer</b>. I gave it the 'Selly' character, designed a consistent persona and response experience, and launched it myself.",
     "e.ds.p1.b":'<span class="badge">~5x annual revenue</span><span class="badge">52 early customers</span><span class="badge">CTR +42%</span><span class="badge">resources −60%</span>',
-    "e.ds.p1.l1":'<span class="tag">Launch</span>Relaunched the product as an AI agent and brought on 52 early customers, growing annual revenue from roughly 1.1B to 5B KRW, about 5x.',
+    "e.ds.p1.l1":'<span class="tag">Launch</span>Relaunched the product as an AI agent and brought on 52 early customers, growing annual revenue from roughly $0.8M to $3.8M, about 5x.',
     "e.ds.p1.l2":'<span class="tag">Design</span>Built Selly\'s CUI tone and conversation flows on Channel Talk, automating the full sales path from inbound questions to lead capture, follow-up, and human escalation.',
     "e.ds.p1.l3":'<span class="tag">Validate</span>Used log analysis to find drop-off points and LLM-analyzed user interviews to pinpoint where trust breaks. Scroll-depth targeted push lifted demo-request CTR by 42%, and a 74% auto-resolution rate on repeat questions cut sales-team workload by 60%.',
     "e.ds.p2.t":"AI workflow shift and SaaS architecture",
@@ -822,8 +833,8 @@
     "e.wt.lead":"Built a spatial-intelligence AI platform and led large-scale logistics DX",
     "e.wt.p1.t":"Digital twin and smart logistics, Pulmuone Foodmerce",
     "e.wt.p1.c":"I owned a project that <b>converted manual, inefficient warehouse work into a digital twin</b>, from winning the deal through on-site deployment.",
-    "e.wt.p1.b":'<span class="badge">8B/yr in savings</span><span class="badge">owned the deal</span>',
-    "e.wt.p1.l1":'<span class="tag">Win</span>Led the client proposal and bidding to win the project, creating roughly 8B KRW/yr in operating efficiency.',
+    "e.wt.p1.b":'<span class="badge">~$6M/yr saved</span><span class="badge">owned the deal</span>',
+    "e.wt.p1.l1":'<span class="tag">Win</span>Led the client proposal and bidding to win the project, creating roughly $6M/yr in operating efficiency.',
     "e.wt.p1.l2":'<span class="tag">Build</span>Built picking navigation and ESL digital-label infrastructure on the floor, digitized manual work, and drove on-site deployment of autonomous forklifts and LiDAR vision as PM.',
     "e.wt.p1.l3":'<span class="tag">Global</span>Ran on-site PoCs and technical talks directly with USFK Camp Humphreys, the Dubai Police, and DHL.',
 
@@ -873,7 +884,7 @@
     "tl.ds.r":"Leading the build and launch of AI sales agent 'Selly' and a company-wide shift to AI workflows.",
     "tl.cd.co":"Creative Design Lab",
     "tl.cd.r":"Reported to the founder to launch a new service MVP and support its market entry.",
-    "tl.wt.r":"Led smart-logistics DX on a digital twin, driving 8B KRW/yr in savings and global PoCs.",
+    "tl.wt.r":"Led smart-logistics DX on a digital twin, driving ~$6M/yr in savings and global PoCs.",
     "tl.lp.co":"loplat",
     "tl.lp.r":"Advanced a location-data B2B solution and launched a new service on a 1M-user base.",
     "tl.bs.co":"Barunsesang Hospital",
@@ -983,8 +994,21 @@
   var toggle=document.getElementById('navToggle'),links=document.getElementById('navLinks');
   if(toggle&&links){
     toggle.addEventListener('click',function(){links.classList.toggle('open');});
-    links.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){links.classList.remove('open');});});
   }
+  // GNB 부드러운 스크롤 (고정 nav 높이만큼 오프셋 보정)
+  function navHeight(){return nav?Math.round(nav.getBoundingClientRect().height):64;}
+  document.querySelectorAll('#navLinks a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      var id=a.getAttribute('href');
+      var target=id&&id.length>1?document.querySelector(id):null;
+      if(!target)return;
+      e.preventDefault();
+      if(links)links.classList.remove('open'); // 모바일 메뉴 닫기
+      var y=target.getBoundingClientRect().top+window.pageYOffset-navHeight()-12;
+      window.scrollTo({top:Math.max(0,y),behavior:'smooth'});
+      if(history.replaceState)history.replaceState(null,'',id);
+    });
+  });
   var els=document.querySelectorAll('.reveal');
   function showAll(){els.forEach(function(el){el.classList.add('show');});}
   if('IntersectionObserver' in window){
@@ -1003,11 +1027,16 @@
               ? el.getAttribute('data-to-en') : el.getAttribute('data-to');
     return parseInt(t,10)||0;
   }
+  function kpiPrefix(el){
+    var en = (window.__cbotLang==='en');
+    return (en && el.getAttribute('data-prefix-en')!=null)
+              ? el.getAttribute('data-prefix-en') : (el.getAttribute('data-prefix')||'');
+  }
   function runCount(){
     if(counted)return;counted=true;
     document.querySelectorAll('.kpi .count').forEach(function(el){
       var to=kpiTarget(el),
-          prefix=el.getAttribute('data-prefix')||'',
+          prefix=kpiPrefix(el),
           suffix=el.getAttribute('data-suffix')||'',
           dur=1100,start=null;
       function tick(ts){
@@ -1025,7 +1054,7 @@
   document.addEventListener('ckpf:lang',function(){
     if(!counted)return;
     document.querySelectorAll('.kpi .count').forEach(function(el){
-      var prefix=el.getAttribute('data-prefix')||'',
+      var prefix=kpiPrefix(el),
           suffix=el.getAttribute('data-suffix')||'';
       el.textContent=prefix+kpiTarget(el)+suffix;
     });
