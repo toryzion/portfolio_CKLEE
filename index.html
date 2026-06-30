@@ -69,6 +69,13 @@
   .nav-toggle{display:none;background:none;border:0;cursor:pointer;padding:6px;}
   .nav-toggle svg{width:24px;height:24px;stroke:var(--ink);stroke-width:1.6;}
 
+  /* LANG TOGGLE */
+  .nav-right{display:flex;align-items:center;gap:26px;}
+  .lang-switch{display:inline-flex;border:1px solid var(--line-strong);overflow:hidden;flex:0 0 auto;}
+  .lang-switch button{font-family:var(--mono);font-size:0.7rem;letter-spacing:0.06em;font-weight:500;padding:6px 11px;background:none;border:0;cursor:pointer;color:var(--ink-3);transition:background .2s,color .2s;}
+  .lang-switch button.active{background:var(--ink);color:var(--paper);}
+  .lang-switch button:not(.active):hover{color:var(--ink);}
+
   /* HERO */
   header.hero{padding:160px 0 0;}
   .hero-top{display:grid;grid-template-columns:1.15fr 1fr;gap:72px;align-items:start;padding-bottom:60px;}
@@ -310,7 +317,9 @@
     .nav-links{position:fixed;top:63px;left:0;right:0;background:var(--paper);flex-direction:column;gap:0;border-bottom:1px solid var(--line);max-height:0;overflow:hidden;transition:max-height .25s;}
     .nav-links.open{max-height:340px;}
     .nav-links a{padding:16px 40px;border-top:1px solid var(--line);}
-    .nav-toggle{display:block;}
+    .nav-toggle{display:block;order:3;}
+    .nav-right{gap:12px;}
+    .lang-switch{order:2;}
   }
   @media (max-width:560px){
     .wrap{padding:0 24px;}
@@ -335,12 +344,18 @@
     <button class="nav-toggle" aria-label="메뉴" id="navToggle">
       <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="20" y2="16"/></svg>
     </button>
-    <div class="nav-links" id="navLinks">
-      <a href="#about">About</a>
-      <a href="#experience">Work</a>
-      <a href="#skills">Skills</a>
-      <a href="#timeline">Career</a>
-      <a href="#contact">Contact</a>
+    <div class="nav-right">
+      <div class="nav-links" id="navLinks">
+        <a href="#about" data-i18n="nav.about">About</a>
+        <a href="#experience" data-i18n="nav.work">Work</a>
+        <a href="#skills" data-i18n="nav.skills">Skills</a>
+        <a href="#timeline" data-i18n="nav.career">Career</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
+      </div>
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button" id="langKo" data-lang="ko">KO</button>
+        <button type="button" id="langEn" data-lang="en">EN</button>
+      </div>
     </div>
   </div>
 </nav>
@@ -349,16 +364,16 @@
   <div class="wrap">
     <div class="hero-top">
       <div>
-        <span class="eyebrow">Product Manager — 이찬근 / Chan Kun Lee</span>
-        <h1>판을 읽고<br><em>답을</em> 실행한다</h1>
+        <span class="eyebrow" data-i18n="hero.eyebrow">Product Manager — 이찬근 / Chan Kun Lee</span>
+        <h1 data-i18n-html="hero.h1">판을 읽고<br><em>답을</em> 실행한다</h1>
       </div>
       <div class="hero-right">
-        <p class="tagline">제품은 매번 달랐지만, 일하는 방식은 그대로였습니다.</p>
-        <p class="lead">AI 음성 비서부터 디지털 트윈, AI 세일즈 에이전트까지. 들어갈 때마다 이 제품이 풀어야 할 진짜 문제를 다시 정의했습니다.</p>
-        <p class="lead"><strong>그 정의를 측정 가능한 지표로 바꿔 닫아내는 것, 그게 제가 하는 일입니다.</strong></p>
+        <p class="tagline" data-i18n="hero.tagline">제품은 매번 달랐지만, 일하는 방식은 그대로였습니다.</p>
+        <p class="lead" data-i18n="hero.lead1">AI 음성 비서부터 디지털 트윈, AI 세일즈 에이전트까지. 들어갈 때마다 이 제품이 풀어야 할 진짜 문제를 다시 정의했습니다.</p>
+        <p class="lead" data-i18n-html="hero.lead2"><strong>그 정의를 측정 가능한 지표로 바꿔 닫아내는 것, 그게 제가 하는 일입니다.</strong></p>
         <div class="hero-cta">
-          <a href="#experience" class="btn btn-primary">프로젝트 보기</a>
-          <a href="mailto:leeckv@naver.com?subject=%5B%EC%B1%84%EC%9A%A9%20%EB%AC%B8%EC%9D%98%5D%20PM%20%EC%9D%B4%EC%B0%AC%EA%B7%BC%EB%8B%98%EA%BB%98" class="btn btn-ghost">메일 보내기</a>
+          <a href="#experience" class="btn btn-primary" data-i18n="hero.cta1">프로젝트 보기</a>
+          <a href="mailto:leeckv@naver.com?subject=%5B%EC%B1%84%EC%9A%A9%20%EB%AC%B8%EC%9D%98%5D%20PM%20%EC%9D%B4%EC%B0%AC%EA%B7%BC%EB%8B%98%EA%BB%98" class="btn btn-ghost" data-i18n="hero.cta2">메일 보내기</a>
         </div>
       </div>
     </div>
@@ -366,19 +381,19 @@
     <div class="kpi reveal">
       <div class="cell">
         <div class="k-num"><span class="count" data-to="8" data-prefix="+">+0</span><span class="k-unit">%p</span></div>
-        <div class="k-desc">SKT AI 서비스 시장 점유율 상승</div>
+        <div class="k-desc" data-i18n="kpi.1">SKT AI 서비스 시장 점유율 상승</div>
       </div>
       <div class="cell">
         <div class="k-num"><span class="count" data-to="80">0</span><span class="k-unit">억</span></div>
-        <div class="k-desc">디지털 전환으로 만든 연간 운영 효율화</div>
+        <div class="k-desc" data-i18n="kpi.2">디지털 전환으로 만든 연간 운영 효율화</div>
       </div>
       <div class="cell">
         <div class="k-num"><span class="count" data-to="60">0</span><span class="k-unit">%↓</span></div>
-        <div class="k-desc">AI 워크플로우로 단축한 기획 리드타임</div>
+        <div class="k-desc" data-i18n="kpi.3">AI 워크플로우로 단축한 기획 리드타임</div>
       </div>
       <div class="cell">
         <div class="k-num"><span class="count" data-to="6" data-suffix="+">0</span><span class="k-unit">개국</span></div>
-        <div class="k-desc">FIFA 월드컵 거버넌스부터 글로벌 협업까지</div>
+        <div class="k-desc" data-i18n="kpi.4">FIFA 월드컵 거버넌스부터 글로벌 협업까지</div>
       </div>
     </div>
   </div>
@@ -388,20 +403,20 @@
   <div class="wrap">
     <div class="sec-head">
       <span class="sec-num">01</span>
-      <h2 class="sec-title">복잡한 문제를 실행 가능한 형태로</h2>
-      <p class="sec-sub">정량과 정성을 함께 보고, 합의를 만들어 끝까지 출시합니다.</p>
+      <h2 class="sec-title" data-i18n="sec.about.t">복잡한 문제를 실행 가능한 형태로</h2>
+      <p class="sec-sub" data-i18n="sec.about.s">정량과 정성을 함께 보고, 합의를 만들어 끝까지 출시합니다.</p>
     </div>
     <div class="about-grid">
       <div class="about-body reveal">
-        <p class="lead-line">기능을 그리기 전에, 이 제품이 풀어야 할 진짜 문제가 무엇인지부터 다시 정의합니다.</p>
-        <p>제가 문제를 푸는 방식은 <strong>정량과 정성을 같이 봅니다.</strong> 숫자만 보면 사람이 왜 이탈하는지 모르고, 정성만 보면 개선이 검증되지 않기 때문입니다. 로그와 지표로 무엇이 일어나는지 보고, 사용자 인터뷰로 왜 일어나는지 정의한 뒤, A/B 테스트로 개선을 닫습니다.</p>
-        <p>대한축구협회와 FIFA 개최지 선정식에서 다진 <strong>글로벌 이해관계자 조율 경험</strong>, SKT에서 쌓은 <strong>AI 서비스 설계 역량</strong>, 스타트업에서 증명한 <strong>고속 실행력</strong>이 지금의 방식을 만들었습니다. 최근에는 LLM 워크플로우를 기획에 결합해 운영 속도를 끌어올렸지만, 이는 결과를 만드는 방식이 아니라 그 사이클을 더 빠르게 돌리는 도구입니다.</p>
+        <p class="lead-line" data-i18n="about.lead">기능을 그리기 전에, 이 제품이 풀어야 할 진짜 문제가 무엇인지부터 다시 정의합니다.</p>
+        <p data-i18n-html="about.p1">제가 문제를 푸는 방식은 <strong>정량과 정성을 같이 봅니다.</strong> 숫자만 보면 사람이 왜 이탈하는지 모르고, 정성만 보면 개선이 검증되지 않기 때문입니다. 로그와 지표로 무엇이 일어나는지 보고, 사용자 인터뷰로 왜 일어나는지 정의한 뒤, A/B 테스트로 개선을 닫습니다.</p>
+        <p data-i18n-html="about.p2">대한축구협회와 FIFA 개최지 선정식에서 다진 <strong>글로벌 이해관계자 조율 경험</strong>, SKT에서 쌓은 <strong>AI 서비스 설계 역량</strong>, 스타트업에서 증명한 <strong>고속 실행력</strong>이 지금의 방식을 만들었습니다. 최근에는 LLM 워크플로우를 기획에 결합해 운영 속도를 끌어올렸지만, 이는 결과를 만드는 방식이 아니라 그 사이클을 더 빠르게 돌리는 도구입니다.</p>
       </div>
       <div class="pillars reveal">
-        <div class="pillar"><div class="pn">01</div><div><h4>전략적 문제 정의</h4><p>물리적 운영 리스크(물류, CS, 제조)를 소프트웨어로 대체하는 구조를 설계하고, 비용 효율과 확장성을 함께 고민합니다.</p></div></div>
-        <div class="pillar"><div class="pn">02</div><div><h4>AI 워크플로우 실행</h4><p>Claude와 Base44를 연동한 파이프라인으로 PRD 작성과 동시에 인터랙티브 UI를 생성합니다. 기획 리드타임을 약 60% 단축했습니다.</p></div></div>
-        <div class="pillar"><div class="pn">03</div><div><h4>글로벌 협업과 거버넌스</h4><p>2022 월드컵 유치위원회에서 스위스 취리히 FIFA 개최지 선정식, 영국 런던 국제 컨퍼런스, 남아공 월드컵 현장을 오가며 정부 부처와 글로벌 기관을 조율했습니다. 이후 주한미군 험프리스 캠프, 두바이 경찰청, DHL과 현지 협업과 기술 협의를 직접 이끌었습니다.</p></div></div>
-        <div class="pillar"><div class="pn">04</div><div><h4>데이터 기반 의사결정</h4><p>SQL, GA, Amplitude로 대시보드를 직접 구축하고, 가설에서 A/B 테스트, 전환율 최적화까지 한 사이클을 돌립니다.</p></div></div>
+        <div class="pillar"><div class="pn">01</div><div><h4 data-i18n="pillar.1.t">전략적 문제 정의</h4><p data-i18n="pillar.1.d">물리적 운영 리스크(물류, CS, 제조)를 소프트웨어로 대체하는 구조를 설계하고, 비용 효율과 확장성을 함께 고민합니다.</p></div></div>
+        <div class="pillar"><div class="pn">02</div><div><h4 data-i18n="pillar.2.t">AI 워크플로우 실행</h4><p data-i18n="pillar.2.d">Claude와 Base44를 연동한 파이프라인으로 PRD 작성과 동시에 인터랙티브 UI를 생성합니다. 기획 리드타임을 약 60% 단축했습니다.</p></div></div>
+        <div class="pillar"><div class="pn">03</div><div><h4 data-i18n="pillar.3.t">글로벌 협업과 거버넌스</h4><p data-i18n="pillar.3.d">2022 월드컵 유치위원회에서 스위스 취리히 FIFA 개최지 선정식, 영국 런던 국제 컨퍼런스, 남아공 월드컵 현장을 오가며 정부 부처와 글로벌 기관을 조율했습니다. 이후 주한미군 험프리스 캠프, 두바이 경찰청, DHL과 현지 협업과 기술 협의를 직접 이끌었습니다.</p></div></div>
+        <div class="pillar"><div class="pn">04</div><div><h4 data-i18n="pillar.4.t">데이터 기반 의사결정</h4><p data-i18n="pillar.4.d">SQL, GA, Amplitude로 대시보드를 직접 구축하고, 가설에서 A/B 테스트, 전환율 최적화까지 한 사이클을 돌립니다.</p></div></div>
       </div>
     </div>
   </div>
@@ -411,37 +426,37 @@
   <div class="wrap">
     <div class="sec-head">
       <span class="sec-num">02</span>
-      <h2 class="sec-title">주요 프로젝트와 성과</h2>
-      <p class="sec-sub">숫자로 증명한 임팩트, 구조로 설계한 해결.</p>
+      <h2 class="sec-title" data-i18n="sec.exp.t">주요 프로젝트와 성과</h2>
+      <p class="sec-sub" data-i18n="sec.exp.s">숫자로 증명한 임팩트, 구조로 설계한 해결.</p>
     </div>
     <div class="exp-list">
 
       <div class="exp open reveal" data-default-open>
         <button class="exp-head" aria-expanded="true">
-          <div class="ht"><div class="co">딥세일즈</div><div class="exp-lead">AI 세일즈 에이전트 'Selly' 기획과 런칭, 전사 AI 워크플로우 전환</div></div>
-          <div class="meta">2025.11 — 현재<br>PM Senior Manager</div>
+          <div class="ht"><div class="co" data-i18n="e.ds.co">딥세일즈</div><div class="exp-lead" data-i18n="e.ds.lead">AI 세일즈 에이전트 'Selly' 기획과 런칭, 전사 AI 워크플로우 전환</div></div>
+          <div class="meta">2025.11 — <span data-i18n="time.present">현재</span><br>PM Senior Manager</div>
           <svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
         </button>
         <div class="exp-body"><div class="exp-body-inner"><div class="exp-pad">
           <div class="exp-grid-2">
             <div class="proj">
-              <div class="proj-title">AI 세일즈 에이전트 'Selly'</div>
-              <p class="proj-context">단순 리드 수집에 그치던 기존 프로덕트를, <b>고객이 실제 세일즈 담당자와 대화하듯 응대받는 AI Agent 프로덕트로 전환</b>했습니다. 'Selly'라는 캐릭터를 이식해 일관된 페르소나와 응대 경험을 설계하고 직접 런칭했습니다.</p>
-              <div class="badges"><span class="badge">연매출 약 5배</span><span class="badge">초기 고객사 52곳</span><span class="badge">CTR +42%</span><span class="badge">리소스 −60%</span></div>
+              <div class="proj-title" data-i18n="e.ds.p1.t">AI 세일즈 에이전트 'Selly'</div>
+              <p class="proj-context" data-i18n-html="e.ds.p1.c">단순 리드 수집에 그치던 기존 프로덕트를, <b>고객이 실제 세일즈 담당자와 대화하듯 응대받는 AI Agent 프로덕트로 전환</b>했습니다. 'Selly'라는 캐릭터를 이식해 일관된 페르소나와 응대 경험을 설계하고 직접 런칭했습니다.</p>
+              <div class="badges" data-i18n-html="e.ds.p1.b"><span class="badge">연매출 약 5배</span><span class="badge">초기 고객사 52곳</span><span class="badge">CTR +42%</span><span class="badge">리소스 −60%</span></div>
               <ul>
-                <li><span class="tag">런칭</span>AI Agent 프로덕트로 전환 후 직접 런칭해 초기 고객사 52곳을 유치. 연매출을 약 11억 원에서 약 50억 원 규모로 끌어올리며 약 5배 성장시켰습니다.</li>
-                <li><span class="tag">설계</span>채널톡 기반 'Selly'의 CUI 톤앤매너와 대화 시나리오를 구축. 문의 응답부터 리드 생성, Follow-up, 상담원 에스컬레이션까지 세일즈 전 구간을 자동화.</li>
-                <li><span class="tag">검증</span>로그 분석으로 이탈 구간을 찾고 유저 인터뷰를 LLM으로 분석해 고객이 신뢰를 잃는 지점을 정의. 스크롤 깊이 타겟팅 푸시로 데모 신청 CTR 42% 개선, 반복 문의 자동 해결률 74% 달성으로 세일즈팀 리소스 60% 절감.</li>
+                <li data-i18n-html="e.ds.p1.l1"><span class="tag">런칭</span>AI Agent 프로덕트로 전환 후 직접 런칭해 초기 고객사 52곳을 유치. 연매출을 약 11억 원에서 약 50억 원 규모로 끌어올리며 약 5배 성장시켰습니다.</li>
+                <li data-i18n-html="e.ds.p1.l2"><span class="tag">설계</span>채널톡 기반 'Selly'의 CUI 톤앤매너와 대화 시나리오를 구축. 문의 응답부터 리드 생성, Follow-up, 상담원 에스컬레이션까지 세일즈 전 구간을 자동화.</li>
+                <li data-i18n-html="e.ds.p1.l3"><span class="tag">검증</span>로그 분석으로 이탈 구간을 찾고 유저 인터뷰를 LLM으로 분석해 고객이 신뢰를 잃는 지점을 정의. 스크롤 깊이 타겟팅 푸시로 데모 신청 CTR 42% 개선, 반복 문의 자동 해결률 74% 달성으로 세일즈팀 리소스 60% 절감.</li>
               </ul>
             </div>
             <div class="proj">
-              <div class="proj-title">AI 워크플로우 전환과 SaaS 아키텍처</div>
-              <p class="proj-context">기획 조직 전반에 LLM 워크플로우를 이식해 <b>아이디어에서 검증까지의 사이클을 압축</b>하고, 글로벌 개발사와의 협업 구조와 과금 로직까지 설계했습니다.</p>
-              <div class="badges"><span class="badge">리드타임 −60%</span><span class="badge">Claude + Base44</span></div>
+              <div class="proj-title" data-i18n="e.ds.p2.t">AI 워크플로우 전환과 SaaS 아키텍처</div>
+              <p class="proj-context" data-i18n-html="e.ds.p2.c">기획 조직 전반에 LLM 워크플로우를 이식해 <b>아이디어에서 검증까지의 사이클을 압축</b>하고, 글로벌 개발사와의 협업 구조와 과금 로직까지 설계했습니다.</p>
+              <div class="badges" data-i18n-html="e.ds.p2.b"><span class="badge">리드타임 −60%</span><span class="badge">Claude + Base44</span></div>
               <ul>
-                <li><span class="tag">전환</span>Claude와 Gemini 멀티 LLM 워크플로우를 전사 도입해 서비스 기획과 오퍼레이션 리드타임을 약 60% 단축.</li>
-                <li><span class="tag">자동화</span>Claude의 추론과 Base44의 실시간 렌더링을 연동해 PRD 작성과 동시에 인터랙티브 UI를 생성.</li>
-                <li><span class="tag">설계</span>Next.js, PostgreSQL, n8n, OpenRouter 기반 하이브리드 아키텍처 수립. 3단계 구독 티어 Pricing과 Toss Payments, Stripe 연동 리딩.</li>
+                <li data-i18n-html="e.ds.p2.l1"><span class="tag">전환</span>Claude와 Gemini 멀티 LLM 워크플로우를 전사 도입해 서비스 기획과 오퍼레이션 리드타임을 약 60% 단축.</li>
+                <li data-i18n-html="e.ds.p2.l2"><span class="tag">자동화</span>Claude의 추론과 Base44의 실시간 렌더링을 연동해 PRD 작성과 동시에 인터랙티브 UI를 생성.</li>
+                <li data-i18n-html="e.ds.p2.l3"><span class="tag">설계</span>Next.js, PostgreSQL, n8n, OpenRouter 기반 하이브리드 아키텍처 수립. 3단계 구독 티어 Pricing과 Toss Payments, Stripe 연동 리딩.</li>
               </ul>
             </div>
           </div>
@@ -450,19 +465,19 @@
 
       <div class="exp reveal">
         <button class="exp-head" aria-expanded="false">
-          <div class="ht"><div class="co">크디랩</div><div class="exp-lead">대표 직속으로 신규 서비스 MVP 런칭과 시장 안착 지원</div></div>
+          <div class="ht"><div class="co" data-i18n="e.cd.co">크디랩</div><div class="exp-lead" data-i18n="e.cd.lead">대표 직속으로 신규 서비스 MVP 런칭과 시장 안착 지원</div></div>
           <div class="meta">2025.05 — 2025.07<br>PM Lead</div>
           <svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
         </button>
         <div class="exp-body"><div class="exp-body-inner"><div class="exp-pad">
           <div class="proj">
-            <div class="proj-title">레거시 개편과 B2B에서 B2C, B2G 확장</div>
-            <p class="proj-context">노후화된 플랫폼을 <b>제로베이스에서 다시 설계</b>하고, 기존 대기업 중심 사업을 일반 사용자와 공공 영역으로 넓혔습니다.</p>
-            <div class="badges"><span class="badge">Full-Cycle 리뉴얼</span><span class="badge">대형 고객사 확보</span></div>
+            <div class="proj-title" data-i18n="e.cd.p1.t">레거시 개편과 B2B에서 B2C, B2G 확장</div>
+            <p class="proj-context" data-i18n-html="e.cd.p1.c">노후화된 플랫폼을 <b>제로베이스에서 다시 설계</b>하고, 기존 대기업 중심 사업을 일반 사용자와 공공 영역으로 넓혔습니다.</p>
+            <div class="badges" data-i18n-html="e.cd.p1.b"><span class="badge">Full-Cycle 리뉴얼</span><span class="badge">대형 고객사 확보</span></div>
             <ul>
-              <li><span class="tag">리뉴얼</span>노후 플랫폼의 서비스 플로우와 정보 구조를 제로베이스에서 재설계해 사용자 편의성과 운영 효율을 개선.</li>
-              <li><span class="tag">확장</span>대기업 중심 모델을 일반 사용자와 공공 영역으로 확장. 현대리바트 등 신규 고객사 확보와 주요 고객사 재계약을 리딩.</li>
-              <li><span class="tag">AI</span>Base44, GPT, Gemini 워크플로우를 실무에 이식해 기획과 오퍼레이션 속도를 단축.</li>
+              <li data-i18n-html="e.cd.p1.l1"><span class="tag">리뉴얼</span>노후 플랫폼의 서비스 플로우와 정보 구조를 제로베이스에서 재설계해 사용자 편의성과 운영 효율을 개선.</li>
+              <li data-i18n-html="e.cd.p1.l2"><span class="tag">확장</span>대기업 중심 모델을 일반 사용자와 공공 영역으로 확장. 현대리바트 등 신규 고객사 확보와 주요 고객사 재계약을 리딩.</li>
+              <li data-i18n-html="e.cd.p1.l3"><span class="tag">AI</span>Base44, GPT, Gemini 워크플로우를 실무에 이식해 기획과 오퍼레이션 속도를 단축.</li>
             </ul>
           </div>
         </div></div></div>
@@ -470,19 +485,19 @@
 
       <div class="exp reveal">
         <button class="exp-head" aria-expanded="false">
-          <div class="ht"><div class="co">WATA AI</div><div class="exp-lead">공간 정보 AI 플랫폼 구축과 대규모 물류 DX 리딩</div></div>
+          <div class="ht"><div class="co" data-i18n="e.wt.co">WATA AI</div><div class="exp-lead" data-i18n="e.wt.lead">공간 정보 AI 플랫폼 구축과 대규모 물류 DX 리딩</div></div>
           <div class="meta">2024.07 — 2025.05<br>PM Senior Manager</div>
           <svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
         </button>
         <div class="exp-body"><div class="exp-body-inner"><div class="exp-pad">
           <div class="proj">
-            <div class="proj-title">디지털 트윈과 스마트 물류, 풀무원 푸드머스</div>
-            <p class="proj-context">물류 현장의 수기 작업과 비효율을 <b>디지털 트윈으로 전환</b>하는 프로젝트를 수주 단계부터 현장 이식까지 총괄했습니다.</p>
-            <div class="badges"><span class="badge">연 80억 효율화</span><span class="badge">수주 총괄</span></div>
+            <div class="proj-title" data-i18n="e.wt.p1.t">디지털 트윈과 스마트 물류, 풀무원 푸드머스</div>
+            <p class="proj-context" data-i18n-html="e.wt.p1.c">물류 현장의 수기 작업과 비효율을 <b>디지털 트윈으로 전환</b>하는 프로젝트를 수주 단계부터 현장 이식까지 총괄했습니다.</p>
+            <div class="badges" data-i18n-html="e.wt.p1.b"><span class="badge">연 80억 효율화</span><span class="badge">수주 총괄</span></div>
             <ul>
-              <li><span class="tag">수주</span>고객사 제안과 사업 비딩을 총괄해 프로젝트 수주에 성공, 연 80억 규모의 운영 효율화 임팩트를 만들었습니다.</li>
-              <li><span class="tag">구현</span>현장 피킹 네비게이션과 ESL 디지털 명판 인프라를 구축하고 수기 작업을 전산화. 무인 지게차와 LiDAR 비전 인식 기술의 현장 이식을 PM으로 주도.</li>
-              <li><span class="tag">글로벌</span>주한미군 험프리스 캠프, 두바이 경찰청, DHL과 현지 PoC와 기술 협의를 직접 진행.</li>
+              <li data-i18n-html="e.wt.p1.l1"><span class="tag">수주</span>고객사 제안과 사업 비딩을 총괄해 프로젝트 수주에 성공, 연 80억 규모의 운영 효율화 임팩트를 만들었습니다.</li>
+              <li data-i18n-html="e.wt.p1.l2"><span class="tag">구현</span>현장 피킹 네비게이션과 ESL 디지털 명판 인프라를 구축하고 수기 작업을 전산화. 무인 지게차와 LiDAR 비전 인식 기술의 현장 이식을 PM으로 주도.</li>
+              <li data-i18n-html="e.wt.p1.l3"><span class="tag">글로벌</span>주한미군 험프리스 캠프, 두바이 경찰청, DHL과 현지 PoC와 기술 협의를 직접 진행.</li>
             </ul>
           </div>
         </div></div></div>
@@ -490,19 +505,19 @@
 
       <div class="exp reveal">
         <button class="exp-head" aria-expanded="false">
-          <div class="ht"><div class="co">로플랫</div><div class="exp-lead">위치 데이터 B2B 솔루션과 신규 커뮤니티 서비스 런칭</div></div>
+          <div class="ht"><div class="co" data-i18n="e.lp.co">로플랫</div><div class="exp-lead" data-i18n="e.lp.lead">위치 데이터 B2B 솔루션과 신규 커뮤니티 서비스 런칭</div></div>
           <div class="meta">2021.11 — 2023.03<br>PM 매니저</div>
           <svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
         </button>
         <div class="exp-body"><div class="exp-body-inner"><div class="exp-pad">
           <div class="proj">
-            <div class="proj-title">위치 데이터 프로덕트와 '불펜' 런칭</div>
-            <p class="proj-context">위치 데이터를 <b>B2B 솔루션과 신규 사용자 서비스 양쪽으로 확장</b>하며, 제한된 리소스 안에서 런칭 사이클을 완주했습니다.</p>
-            <div class="badges"><span class="badge">100만+ 데이터</span><span class="badge">MVP to 3차 QA</span></div>
+            <div class="proj-title" data-i18n="e.lp.p1.t">위치 데이터 프로덕트와 '불펜' 런칭</div>
+            <p class="proj-context" data-i18n-html="e.lp.p1.c">위치 데이터를 <b>B2B 솔루션과 신규 사용자 서비스 양쪽으로 확장</b>하며, 제한된 리소스 안에서 런칭 사이클을 완주했습니다.</p>
+            <div class="badges" data-i18n-html="e.lp.p1.b"><span class="badge">100만+ 데이터</span><span class="badge">MVP to 3차 QA</span></div>
             <ul>
-              <li><span class="tag">솔루션</span>WiFi 핑거프린트 기반 'loplat X'의 기능을 고도화해 B2B 클라이언트 유치와 매출 증대에 기여.</li>
-              <li><span class="tag">런칭</span>프로야구 관람객 100만 명 이상 데이터를 기반으로 '불펜'을 기획, MVP부터 3차 QA까지 런칭 사이클을 총괄.</li>
-              <li><span class="tag">파트너십</span>Braze 글로벌 파트너십 체결 실무를 지원하고, 삼성전자판매, 신성통상과 기술 협업을 진행.</li>
+              <li data-i18n-html="e.lp.p1.l1"><span class="tag">솔루션</span>WiFi 핑거프린트 기반 'loplat X'의 기능을 고도화해 B2B 클라이언트 유치와 매출 증대에 기여.</li>
+              <li data-i18n-html="e.lp.p1.l2"><span class="tag">런칭</span>프로야구 관람객 100만 명 이상 데이터를 기반으로 '불펜'을 기획, MVP부터 3차 QA까지 런칭 사이클을 총괄.</li>
+              <li data-i18n-html="e.lp.p1.l3"><span class="tag">파트너십</span>Braze 글로벌 파트너십 체결 실무를 지원하고, 삼성전자판매, 신성통상과 기술 협업을 진행.</li>
             </ul>
           </div>
         </div></div></div>
@@ -510,19 +525,19 @@
 
       <div class="exp reveal">
         <button class="exp-head" aria-expanded="false">
-          <div class="ht"><div class="co">SK텔레콤</div><div class="exp-lead">AI 스피커 'NUGU' 시장 점유율 18에서 26%로</div></div>
+          <div class="ht"><div class="co" data-i18n="e.sk.co">SK텔레콤</div><div class="exp-lead" data-i18n="e.sk.lead">AI 스피커 'NUGU' 시장 점유율 18에서 26%로</div></div>
           <div class="meta">2016.04 — 2018.04<br>서비스기획 매니저</div>
           <svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
         </button>
         <div class="exp-body"><div class="exp-body-inner"><div class="exp-pad">
           <div class="proj">
-            <div class="proj-title">AI 서비스 'NUGU' 제품 전략과 CUI 설계</div>
-            <p class="proj-context">대화형 AI 서비스의 초기 표준이 없던 시기에 <b>페르소나와 발화 시나리오의 기준을 직접 정립</b>하고, 국가적 이벤트를 지렛대 삼아 점유율을 끌어올렸습니다.</p>
-            <div class="badges"><span class="badge">점유율 +8%p</span><span class="badge">국내 최초 LBS 광고</span></div>
+            <div class="proj-title" data-i18n="e.sk.p1.t">AI 서비스 'NUGU' 제품 전략과 CUI 설계</div>
+            <p class="proj-context" data-i18n-html="e.sk.p1.c">대화형 AI 서비스의 초기 표준이 없던 시기에 <b>페르소나와 발화 시나리오의 기준을 직접 정립</b>하고, 국가적 이벤트를 지렛대 삼아 점유율을 끌어올렸습니다.</p>
+            <div class="badges" data-i18n-html="e.sk.p1.b"><span class="badge">점유율 +8%p</span><span class="badge">국내 최초 LBS 광고</span></div>
             <ul>
-              <li><span class="tag">페르소나</span>AI 스피커 NUGU의 서비스 정체성과 페르소나, 톤앤매너를 설계. 발화 시스템과 UX 시나리오의 표준을 구축.</li>
-              <li><span class="tag">올림픽</span>2018 평창 동계 올림픽 특화 AI 서비스를 기획하고 마케팅과 연계해 NUGU 시장 점유율을 18%에서 26%로 끌어올렸습니다.</li>
-              <li><span class="tag">수익화</span>T map 연동 음성인식 서비스를 기획하고, 국내 최초의 차량 위치 기반 광고 모델을 설계.</li>
+              <li data-i18n-html="e.sk.p1.l1"><span class="tag">페르소나</span>AI 스피커 NUGU의 서비스 정체성과 페르소나, 톤앤매너를 설계. 발화 시스템과 UX 시나리오의 표준을 구축.</li>
+              <li data-i18n-html="e.sk.p1.l2"><span class="tag">올림픽</span>2018 평창 동계 올림픽 특화 AI 서비스를 기획하고 마케팅과 연계해 NUGU 시장 점유율을 18%에서 26%로 끌어올렸습니다.</li>
+              <li data-i18n-html="e.sk.p1.l3"><span class="tag">수익화</span>T map 연동 음성인식 서비스를 기획하고, 국내 최초의 차량 위치 기반 광고 모델을 설계.</li>
             </ul>
           </div>
         </div></div></div>
@@ -530,19 +545,19 @@
 
       <div class="exp reveal">
         <button class="exp-head" aria-expanded="false">
-          <div class="ht"><div class="co">2022 월드컵 유치위원회</div><div class="exp-lead">국가 단위 메가 이벤트의 글로벌 홍보와 거버넌스 대응</div></div>
+          <div class="ht"><div class="co" data-i18n="e.wc.co">2022 월드컵 유치위원회</div><div class="exp-lead" data-i18n="e.wc.lead">국가 단위 메가 이벤트의 글로벌 홍보와 거버넌스 대응</div></div>
           <div class="meta">2010.04 — 2010.12<br>기획홍보 사원</div>
           <svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
         </button>
         <div class="exp-body"><div class="exp-body-inner"><div class="exp-pad">
           <div class="proj">
-            <div class="proj-title">월드컵 유치 전략과 글로벌 거버넌스 대응</div>
-            <p class="proj-context">2022 월드컵 유치를 위해 <b>스위스, 영국, 남아공을 오가며 글로벌 미디어와 최고위층 거버넌스를 대응</b>했습니다. 국가 단위 프로젝트의 현장을 직접 운영한 경험입니다.</p>
-            <div class="badges"><span class="badge">FIFA 선정식 대응</span><span class="badge">런던 국제 컨퍼런스</span><span class="badge">글로벌 미디어</span></div>
+            <div class="proj-title" data-i18n="e.wc.p1.t">월드컵 유치 전략과 글로벌 거버넌스 대응</div>
+            <p class="proj-context" data-i18n-html="e.wc.p1.c">2022 월드컵 유치를 위해 <b>스위스, 영국, 남아공을 오가며 글로벌 미디어와 최고위층 거버넌스를 대응</b>했습니다. 국가 단위 프로젝트의 현장을 직접 운영한 경험입니다.</p>
+            <div class="badges" data-i18n-html="e.wc.p1.b"><span class="badge">FIFA 선정식 대응</span><span class="badge">런던 국제 컨퍼런스</span><span class="badge">글로벌 미디어</span></div>
             <ul>
-              <li><span class="tag">현장</span>스위스 취리히 FIFA 개최지 선정식에 한국 대표단 언론 담당관으로 파견되어 공식 대변인 역할을 보좌하고, 전 세계 언론사 대상 보도자료 배포와 취재 지원을 운영.</li>
-              <li><span class="tag">컨퍼런스</span>영국 런던 'Leaders in Football' 컨퍼런스의 한국 홍보 부스를 기획부터 설치, 운영까지 전담하며 글로벌 축구 행정가와 비즈니스 리더에게 유치 비전을 브리핑.</li>
-              <li><span class="tag">콘텐츠</span>박지성, 강수진, 박태환 등 홍보대사 섭외와 광고 영상 제작을 총괄하고, 2010 남아공 월드컵 거리 응원과 연계한 유치 기원 영상으로 범국가적 지지 기반을 마련.</li>
+              <li data-i18n-html="e.wc.p1.l1"><span class="tag">현장</span>스위스 취리히 FIFA 개최지 선정식에 한국 대표단 언론 담당관으로 파견되어 공식 대변인 역할을 보좌하고, 전 세계 언론사 대상 보도자료 배포와 취재 지원을 운영.</li>
+              <li data-i18n-html="e.wc.p1.l2"><span class="tag">컨퍼런스</span>영국 런던 'Leaders in Football' 컨퍼런스의 한국 홍보 부스를 기획부터 설치, 운영까지 전담하며 글로벌 축구 행정가와 비즈니스 리더에게 유치 비전을 브리핑.</li>
+              <li data-i18n-html="e.wc.p1.l3"><span class="tag">콘텐츠</span>박지성, 강수진, 박태환 등 홍보대사 섭외와 광고 영상 제작을 총괄하고, 2010 남아공 월드컵 거리 응원과 연계한 유치 기원 영상으로 범국가적 지지 기반을 마련.</li>
             </ul>
           </div>
         </div></div></div>
@@ -550,19 +565,19 @@
 
       <div class="exp reveal">
         <button class="exp-head" aria-expanded="false">
-          <div class="ht"><div class="co">대한축구협회</div><div class="exp-lead">국가대표 브랜딩과 전국 단위 유소년 리그 운영</div></div>
+          <div class="ht"><div class="co" data-i18n="e.kfa.co">대한축구협회</div><div class="exp-lead" data-i18n="e.kfa.lead">국가대표 브랜딩과 전국 단위 유소년 리그 운영</div></div>
           <div class="meta">2009, 2011<br>기획/운영</div>
           <svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
         </button>
         <div class="exp-body"><div class="exp-body-inner"><div class="exp-pad">
           <div class="proj">
-            <div class="proj-title">마스코트 '백호' 기획과 리그 행정</div>
-            <p class="proj-context">국가대표팀의 <b>상징 마스코트 '백호'를 기획 단계부터 전담</b>하고, 전국 초중고 리그의 운영과 예산 행정을 맡아 스포츠 행정의 기초를 다졌습니다.</p>
-            <div class="badges"><span class="badge">마스코트 '백호' 런칭</span><span class="badge">전국 리그 운영</span></div>
+            <div class="proj-title" data-i18n="e.kfa.p1.t">마스코트 '백호' 기획과 리그 행정</div>
+            <p class="proj-context" data-i18n-html="e.kfa.p1.c">국가대표팀의 <b>상징 마스코트 '백호'를 기획 단계부터 전담</b>하고, 전국 초중고 리그의 운영과 예산 행정을 맡아 스포츠 행정의 기초를 다졌습니다.</p>
+            <div class="badges" data-i18n-html="e.kfa.p1.b"><span class="badge">마스코트 '백호' 런칭</span><span class="badge">전국 리그 운영</span></div>
             <ul>
-              <li><span class="tag">브랜딩</span>국가대표팀의 정체성을 투영한 마스코트 '백호'를 세부 기획안부터 디자인 검토, 제작 공정, 현장 활용 방안까지 전 과정 전담.</li>
-              <li><span class="tag">리그</span>전국 초중고 축구 리그의 운영 담당자로서 대규모 지원금 집행과 예산 관리, 투명한 경비 처리 프로세스를 운영.</li>
-              <li><span class="tag">홍보</span>아마추어 리그 인지도 제고를 위해 인기 걸그룹(달샤벳) 홍보대사를 기획하고, 마스코트를 현장에 도입해 관중 친화적 브랜딩을 강화.</li>
+              <li data-i18n-html="e.kfa.p1.l1"><span class="tag">브랜딩</span>국가대표팀의 정체성을 투영한 마스코트 '백호'를 세부 기획안부터 디자인 검토, 제작 공정, 현장 활용 방안까지 전 과정 전담.</li>
+              <li data-i18n-html="e.kfa.p1.l2"><span class="tag">리그</span>전국 초중고 축구 리그의 운영 담당자로서 대규모 지원금 집행과 예산 관리, 투명한 경비 처리 프로세스를 운영.</li>
+              <li data-i18n-html="e.kfa.p1.l3"><span class="tag">홍보</span>아마추어 리그 인지도 제고를 위해 인기 걸그룹(달샤벳) 홍보대사를 기획하고, 마스코트를 현장에 도입해 관중 친화적 브랜딩을 강화.</li>
             </ul>
           </div>
         </div></div></div>
@@ -576,8 +591,8 @@
   <div class="wrap">
     <div class="sec-head">
       <span class="sec-num">03</span>
-      <h2 class="sec-title">스킬과 도구</h2>
-      <p class="sec-sub">기획부터 데이터, AI 워크플로우까지 직접 다룹니다.</p>
+      <h2 class="sec-title" data-i18n="sec.skills.t">스킬과 도구</h2>
+      <p class="sec-sub" data-i18n="sec.skills.s">기획부터 데이터, AI 워크플로우까지 직접 다룹니다.</p>
     </div>
     <div class="skills-grid">
       <div class="skillcard reveal">
@@ -612,20 +627,20 @@
   <div class="wrap">
     <div class="sec-head">
       <span class="sec-num">04</span>
-      <h2 class="sec-title">커리어 여정</h2>
-      <p class="sec-sub">스포츠 행정과 글로벌 거버넌스에서 출발해 AI 프로덕트까지.</p>
+      <h2 class="sec-title" data-i18n="sec.tl.t">커리어 여정</h2>
+      <p class="sec-sub" data-i18n="sec.tl.s">스포츠 행정과 글로벌 거버넌스에서 출발해 AI 프로덕트까지.</p>
     </div>
     <div class="timeline reveal">
-      <div class="tl-item hi"><div class="tl-year">2025 — 현재</div><div><div class="tl-co">딥세일즈</div><div class="tl-role">AI 세일즈 에이전트 'Selly' 기획과 런칭, 전사 AI 워크플로우 전환을 리딩하고 있습니다.</div></div></div>
-      <div class="tl-item"><div class="tl-year">2025</div><div><div class="tl-co">크디랩</div><div class="tl-role">대표 직속으로 신규 서비스 MVP 런칭과 시장 안착을 지원했습니다.</div></div></div>
-      <div class="tl-item"><div class="tl-year">2024 — 2025</div><div><div class="tl-co">WATA AI</div><div class="tl-role">디지털 트윈 기반 스마트 물류 DX 리딩. 연 80억 운영 효율화와 글로벌 PoC를 주도.</div></div></div>
-      <div class="tl-item"><div class="tl-year">2021 — 2023</div><div><div class="tl-co">로플랫</div><div class="tl-role">위치 데이터 B2B 솔루션 고도화와 100만 사용자 기반 신규 서비스 런칭.</div></div></div>
-      <div class="tl-item"><div class="tl-year">2019 — 2020</div><div><div class="tl-co">바른세상병원</div><div class="tl-role">의료 전용 ERP 시스템 도입과 기획으로 병원 물자와 운영 프로세스를 효율화.</div></div></div>
-      <div class="tl-item"><div class="tl-year">2016 — 2018</div><div><div class="tl-co">SK텔레콤</div><div class="tl-role">AI 스피커 서비스 페르소나와 CUI 설계. 평창 올림픽 특화 기획으로 시장 점유율을 끌어올렸습니다.</div></div></div>
-      <div class="tl-item"><div class="tl-year">2015 — 2016</div><div><div class="tl-co">서울주택도시공사</div><div class="tl-role">공공 임대주택 자산 관리와 주거 복지 민원 프로세스 최적화.</div></div></div>
-      <div class="tl-item"><div class="tl-year">2013 — 2014</div><div><div class="tl-co">파람인터렉티브</div><div class="tl-role">K리그 모바일 매치데이 서비스를 최초 기획. 팬 설문 91% 찬성으로 시장성을 검증했습니다.</div></div></div>
-      <div class="tl-item"><div class="tl-year">2009, 2011</div><div><div class="tl-co">대한축구협회</div><div class="tl-role">국가대표 마스코트 '백호' 기획부터 전국 초중고 리그 운영까지. 스포츠 행정과 브랜딩의 기초를 다졌습니다.</div></div></div>
-      <div class="tl-item"><div class="tl-year">2010</div><div><div class="tl-co">2022 월드컵 유치위원회</div><div class="tl-role">스위스 취리히 FIFA 개최지 선정식 언론 대응, 영국 런던 'Leaders in Football' 컨퍼런스 운영, 남아공 월드컵 현장 활동까지. 정부 부처와 글로벌 기관을 조율한 거버넌스 경험.</div></div></div>
+      <div class="tl-item hi"><div class="tl-year"><span data-i18n-html="tl.ds.y">2025 — 현재</span></div><div><div class="tl-co" data-i18n="tl.ds.co">딥세일즈</div><div class="tl-role" data-i18n="tl.ds.r">AI 세일즈 에이전트 'Selly' 기획과 런칭, 전사 AI 워크플로우 전환을 리딩하고 있습니다.</div></div></div>
+      <div class="tl-item"><div class="tl-year">2025</div><div><div class="tl-co" data-i18n="tl.cd.co">크디랩</div><div class="tl-role" data-i18n="tl.cd.r">대표 직속으로 신규 서비스 MVP 런칭과 시장 안착을 지원했습니다.</div></div></div>
+      <div class="tl-item"><div class="tl-year">2024 — 2025</div><div><div class="tl-co">WATA AI</div><div class="tl-role" data-i18n="tl.wt.r">디지털 트윈 기반 스마트 물류 DX 리딩. 연 80억 운영 효율화와 글로벌 PoC를 주도.</div></div></div>
+      <div class="tl-item"><div class="tl-year">2021 — 2023</div><div><div class="tl-co" data-i18n="tl.lp.co">로플랫</div><div class="tl-role" data-i18n="tl.lp.r">위치 데이터 B2B 솔루션 고도화와 100만 사용자 기반 신규 서비스 런칭.</div></div></div>
+      <div class="tl-item"><div class="tl-year">2019 — 2020</div><div><div class="tl-co" data-i18n="tl.bs.co">바른세상병원</div><div class="tl-role" data-i18n="tl.bs.r">의료 전용 ERP 시스템 도입과 기획으로 병원 물자와 운영 프로세스를 효율화.</div></div></div>
+      <div class="tl-item"><div class="tl-year">2016 — 2018</div><div><div class="tl-co" data-i18n="tl.sk.co">SK텔레콤</div><div class="tl-role" data-i18n="tl.sk.r">AI 스피커 서비스 페르소나와 CUI 설계. 평창 올림픽 특화 기획으로 시장 점유율을 끌어올렸습니다.</div></div></div>
+      <div class="tl-item"><div class="tl-year">2015 — 2016</div><div><div class="tl-co" data-i18n="tl.sh.co">서울주택도시공사</div><div class="tl-role" data-i18n="tl.sh.r">공공 임대주택 자산 관리와 주거 복지 민원 프로세스 최적화.</div></div></div>
+      <div class="tl-item"><div class="tl-year">2013 — 2014</div><div><div class="tl-co" data-i18n="tl.pr.co">파람인터렉티브</div><div class="tl-role" data-i18n="tl.pr.r">K리그 모바일 매치데이 서비스를 최초 기획. 팬 설문 91% 찬성으로 시장성을 검증했습니다.</div></div></div>
+      <div class="tl-item"><div class="tl-year">2009, 2011</div><div><div class="tl-co" data-i18n="tl.kfa.co">대한축구협회</div><div class="tl-role" data-i18n="tl.kfa.r">국가대표 마스코트 '백호' 기획부터 전국 초중고 리그 운영까지. 스포츠 행정과 브랜딩의 기초를 다졌습니다.</div></div></div>
+      <div class="tl-item"><div class="tl-year">2010</div><div><div class="tl-co" data-i18n="tl.wc.co">2022 월드컵 유치위원회</div><div class="tl-role" data-i18n="tl.wc.r">스위스 취리히 FIFA 개최지 선정식 언론 대응, 영국 런던 'Leaders in Football' 컨퍼런스 운영, 남아공 월드컵 현장 활동까지. 정부 부처와 글로벌 기관을 조율한 거버넌스 경험.</div></div></div>
     </div>
   </div>
 </section>
@@ -633,10 +648,10 @@
 <section id="contact" class="contact">
   <div class="wrap">
     <span class="eyebrow">Contact</span>
-    <h2>함께 만들 <em>다음 임팩트</em></h2>
-    <p class="sub">합류 후 라이브 제품의 지표를 책임지든, 새 제품을 처음부터 만들든, 그 자리에서 빠르게 제 몫을 하겠습니다.</p>
+    <h2 data-i18n-html="contact.h2">함께 만들 <em>다음 임팩트</em></h2>
+    <p class="sub" data-i18n="contact.sub">합류 후 라이브 제품의 지표를 책임지든, 새 제품을 처음부터 만들든, 그 자리에서 빠르게 제 몫을 하겠습니다.</p>
     <div class="contact-btns">
-      <button type="button" id="contactBtn"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 3.9M15.4 6.6l-6.8 3.9"/></svg>연락처 보기</button>
+      <button type="button" id="contactBtn"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 3.9M15.4 6.6l-6.8 3.9"/></svg><span data-i18n="contact.btn">연락처 보기</span></button>
     </div>
   </div>
 </section>
@@ -645,7 +660,7 @@
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <button type="button" class="modal-close" id="modalClose" aria-label="닫기"><svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
     <span class="eyebrow">Contact</span>
-    <h3 id="modalTitle">연락처</h3>
+    <h3 id="modalTitle" data-i18n="modal.title">연락처</h3>
     <div class="modal-row">
       <div class="modal-label">Mobile</div>
       <a class="modal-value" href="tel:+821089071810">+82 10 8907 1810</a>
@@ -657,14 +672,14 @@
   </div>
 </div>
 
-<footer>© 2026 이찬근 — Product Manager</footer>
+<footer data-i18n="footer">© 2026 이찬근 — Product Manager</footer>
 
 <!-- CHATBOT WIDGET -->
 <div class="cbot">
   <div class="cbot-bubble" id="cbotBubble" aria-hidden="true">
     <button type="button" class="cbot-bubble-close" id="cbotBubbleClose" aria-label="닫기">×</button>
-    <strong>혹시 이찬근이 궁금하신가요?</strong>
-    <span>채용 문의도, 작은 궁금증도 편하게 남겨주세요. 제가 바로 전달할게요!</span>
+    <strong data-i18n="cbot.bubble.t">혹시 이찬근이 궁금하신가요?</strong>
+    <span data-i18n="cbot.bubble.s">채용 문의도, 작은 궁금증도 편하게 남겨주세요. 제가 바로 전달할게요!</span>
   </div>
   <button type="button" class="cbot-launcher" id="cbotLauncher" aria-label="챗봇 상담 열기">
     <span class="cbot-cat" aria-hidden="true">
@@ -709,8 +724,8 @@
         </svg>
       </span>
       <div class="cbot-header-txt">
-        <div class="cbot-name">상담냥</div>
-        <div class="cbot-status"><span class="cbot-dot"></span>이찬근 PM의 AI 상담냥</div>
+        <div class="cbot-name" data-i18n="cbot.name">상담냥</div>
+        <div class="cbot-status"><span class="cbot-dot"></span><span data-i18n="cbot.status">이찬근 PM의 AI 상담냥</span></div>
       </div>
       <button type="button" class="cbot-close" id="cbotClose" aria-label="닫기"><svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
     </div>
@@ -718,11 +733,11 @@
     <div class="cbot-body" id="cbotBody"></div>
 
     <form class="cbot-form" id="cbotForm">
-      <div class="cbot-field"><label for="cbotName">이름 / 회사</label><input type="text" name="name" id="cbotName" placeholder="홍길동 또는 OO컴퍼니" autocomplete="name" required></div>
-      <div class="cbot-field"><label for="cbotContact">연락처</label><input type="text" name="contact" id="cbotContact" placeholder="이메일 또는 휴대폰" autocomplete="email" required></div>
-      <div class="cbot-field"><label for="cbotMessage">메시지</label><textarea name="message" id="cbotMessage" placeholder="남기실 내용을 적어주세요" rows="2" required></textarea></div>
+      <div class="cbot-field"><label for="cbotName" data-i18n="cbot.f.name">이름 / 회사</label><input type="text" name="name" id="cbotName" placeholder="홍길동 또는 OO컴퍼니" data-i18n-ph="cbot.f.name.ph" autocomplete="name" required></div>
+      <div class="cbot-field"><label for="cbotContact" data-i18n="cbot.f.contact">연락처</label><input type="text" name="contact" id="cbotContact" placeholder="이메일 또는 휴대폰" data-i18n-ph="cbot.f.contact.ph" autocomplete="email" required></div>
+      <div class="cbot-field"><label for="cbotMessage" data-i18n="cbot.f.msg">메시지</label><textarea name="message" id="cbotMessage" placeholder="남기실 내용을 적어주세요" data-i18n-ph="cbot.f.msg.ph" rows="2" required></textarea></div>
       <button type="submit" class="cbot-send" id="cbotSend">
-        <span class="cbot-send-label">이찬근 PM에게 보내기</span>
+        <span class="cbot-send-label" data-i18n="cbot.send">이찬근 PM에게 보내기</span>
         <svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg>
       </button>
     </form>
@@ -731,6 +746,235 @@
 
 
 <script>
+/* ============ i18n ============ */
+(function(){
+  var EN = {
+    "meta.title":"Read the board, ship the answer — PM / Chankun Lee",
+
+    "nav.about":"About","nav.work":"Work","nav.skills":"Skills","nav.career":"Career","nav.contact":"Contact",
+
+    "hero.eyebrow":"Product Manager — Chankun Lee",
+    "hero.h1":"Read the board,<br>ship the <em>answer</em>.",
+    "hero.tagline":"The products kept changing. The way I work didn't.",
+    "hero.lead1":"From an AI voice assistant to a digital twin to an AI sales agent, every time I stepped in, I started by redefining the real problem the product had to solve.",
+    "hero.lead2":"<strong>Then I turn that definition into a metric I can actually move and close. That's the job.</strong>",
+    "hero.cta1":"View work",
+    "hero.cta2":"Email me",
+
+    "kpi.1":"Market share gain for SKT's AI service",
+    "kpi.2":"Annual operating savings from digital transformation",
+    "kpi.3":"Cut in planning lead time via AI workflows",
+    "kpi.4":"From FIFA World Cup governance to global field work",
+
+    "sec.about.t":"Turning messy problems into shippable answers",
+    "sec.about.s":"I read the numbers and the people, build alignment, and ship it through.",
+    "sec.exp.t":"Selected work and outcomes",
+    "sec.exp.s":"Impact proven in numbers, solutions designed in structure.",
+    "sec.skills.t":"Skills and tools",
+    "sec.skills.s":"From product planning to data to AI workflows, all hands-on.",
+    "sec.tl.t":"Career path",
+    "sec.tl.s":"From sports administration and global governance to AI products.",
+
+    "about.lead":"Before drawing a single feature, I go back and redefine what problem this product actually needs to solve.",
+    "about.p1":"I work the <strong>quantitative and the qualitative together.</strong> Numbers alone won't tell you why people churn; qualitative alone won't prove the fix worked. So I read logs and metrics to see what's happening, run user interviews to define why, then close the loop with an A/B test.",
+    "about.p2":"The way I work was shaped by three things: <strong>steering global stakeholders</strong> at the KFA and the FIFA host selection, <strong>designing AI services</strong> at SKT, and <strong>shipping fast</strong> in startups. Lately I've folded LLM workflows into planning to move quicker, but that's a tool to spin the cycle faster, not the thing that creates the result.",
+
+    "pillar.1.t":"Strategic problem framing",
+    "pillar.1.d":"I design structures that replace physical operating risk (logistics, CS, manufacturing) with software, weighing cost efficiency and scalability together.",
+    "pillar.2.t":"Executing with AI workflows",
+    "pillar.2.d":"A Claude + Base44 pipeline that generates interactive UI the moment a PRD is written. It cut planning lead time by roughly 60%.",
+    "pillar.3.t":"Global collaboration and governance",
+    "pillar.3.d":"With the 2022 World Cup Bid Committee I worked the FIFA host selection in Zurich, an international conference in London, and the World Cup ground in South Africa, aligning government bodies and global institutions. Later I personally led on-site collaboration and technical talks with USFK Camp Humphreys, the Dubai Police, and DHL.",
+    "pillar.4.t":"Decisions grounded in data",
+    "pillar.4.d":"I build dashboards myself with SQL, GA, and Amplitude, and run the full loop from hypothesis to A/B test to conversion optimization.",
+
+    "time.present":"Present",
+
+    /* ---- Experience: DeepSales ---- */
+    "e.ds.co":"DeepSales",
+    "e.ds.lead":"Built and launched 'Selly', an AI sales agent, and drove a company-wide shift to AI workflows",
+    "e.ds.p1.t":"'Selly', the AI sales agent",
+    "e.ds.p1.c":"I turned a product that only collected leads into <b>an AI agent that responds the way a real sales rep would talk to a customer</b>. I gave it the 'Selly' character, designed a consistent persona and response experience, and launched it myself.",
+    "e.ds.p1.b":'<span class="badge">~5x annual revenue</span><span class="badge">52 early customers</span><span class="badge">CTR +42%</span><span class="badge">resources −60%</span>',
+    "e.ds.p1.l1":'<span class="tag">Launch</span>Relaunched the product as an AI agent and brought on 52 early customers, growing annual revenue from roughly 1.1B to 5B KRW, about 5x.',
+    "e.ds.p1.l2":'<span class="tag">Design</span>Built Selly\'s CUI tone and conversation flows on Channel Talk, automating the full sales path from inbound questions to lead capture, follow-up, and human escalation.',
+    "e.ds.p1.l3":'<span class="tag">Validate</span>Used log analysis to find drop-off points and LLM-analyzed user interviews to pinpoint where trust breaks. Scroll-depth targeted push lifted demo-request CTR by 42%, and a 74% auto-resolution rate on repeat questions cut sales-team workload by 60%.',
+    "e.ds.p2.t":"AI workflow shift and SaaS architecture",
+    "e.ds.p2.c":"I embedded LLM workflows across the planning org to <b>compress the cycle from idea to validation</b>, and designed the collaboration model with overseas dev partners and the billing logic.",
+    "e.ds.p2.b":'<span class="badge">lead time −60%</span><span class="badge">Claude + Base44</span>',
+    "e.ds.p2.l1":'<span class="tag">Shift</span>Rolled out a Claude + Gemini multi-LLM workflow company-wide, cutting planning and operations lead time by about 60%.',
+    "e.ds.p2.l2":'<span class="tag">Automate</span>Connected Claude\'s reasoning with Base44\'s live rendering to generate interactive UI the moment a PRD is written.',
+    "e.ds.p2.l3":'<span class="tag">Architect</span>Set up a hybrid architecture on Next.js, PostgreSQL, n8n, and OpenRouter, and led the three-tier subscription pricing plus Toss Payments and Stripe integration.',
+
+    /* ---- Creative Design Lab ---- */
+    "e.cd.co":"Creative Design Lab",
+    "e.cd.lead":"Reported to the founder; launched a new service MVP and helped it land in the market",
+    "e.cd.p1.t":"Legacy overhaul and expansion from B2B into B2C and B2G",
+    "e.cd.p1.c":"I <b>rebuilt an aging platform from the ground up</b> and pushed an enterprise-focused business into consumer and public-sector markets.",
+    "e.cd.p1.b":'<span class="badge">full-cycle redesign</span><span class="badge">major accounts won</span>',
+    "e.cd.p1.l1":'<span class="tag">Redesign</span>Re-architected the legacy platform\'s service flow and information structure from scratch, improving usability and operating efficiency.',
+    "e.cd.p1.l2":'<span class="tag">Expand</span>Extended an enterprise model into consumer and public-sector markets, leading new-account wins (incl. Hyundai Livart) and key renewals.',
+    "e.cd.p1.l3":'<span class="tag">AI</span>Brought Base44, GPT, and Gemini workflows into daily work to speed up planning and operations.',
+
+    /* ---- WATA AI ---- */
+    "e.wt.co":"WATA AI",
+    "e.wt.lead":"Built a spatial-intelligence AI platform and led large-scale logistics DX",
+    "e.wt.p1.t":"Digital twin and smart logistics, Pulmuone Foodmerce",
+    "e.wt.p1.c":"I owned a project that <b>converted manual, inefficient warehouse work into a digital twin</b>, from winning the deal through on-site deployment.",
+    "e.wt.p1.b":'<span class="badge">8B/yr in savings</span><span class="badge">owned the deal</span>',
+    "e.wt.p1.l1":'<span class="tag">Win</span>Led the client proposal and bidding to win the project, creating roughly 8B KRW/yr in operating efficiency.',
+    "e.wt.p1.l2":'<span class="tag">Build</span>Built picking navigation and ESL digital-label infrastructure on the floor, digitized manual work, and drove on-site deployment of autonomous forklifts and LiDAR vision as PM.',
+    "e.wt.p1.l3":'<span class="tag">Global</span>Ran on-site PoCs and technical talks directly with USFK Camp Humphreys, the Dubai Police, and DHL.',
+
+    /* ---- loplat ---- */
+    "e.lp.co":"loplat",
+    "e.lp.lead":"Advanced a location-data B2B solution and launched a new community service",
+    "e.lp.p1.t":"Location-data product and the 'Bullpen' launch",
+    "e.lp.p1.c":"I <b>extended location data into both a B2B solution and a new consumer service</b>, completing the launch cycle within tight resources.",
+    "e.lp.p1.b":'<span class="badge">1M+ data points</span><span class="badge">MVP to QA round 3</span>',
+    "e.lp.p1.l1":'<span class="tag">Solution</span>Advanced the WiFi-fingerprint-based "loplat X", helping win B2B clients and grow revenue.',
+    "e.lp.p1.l2":'<span class="tag">Launch</span>Designed "Bullpen" on 1M+ baseball-attendee data points and owned the launch cycle from MVP through the third QA round.',
+    "e.lp.p1.l3":'<span class="tag">Partnership</span>Supported the Braze global partnership deal and ran technical collaboration with Samsung Electronics Sales and Shinsung Tongsang.',
+
+    /* ---- SKT ---- */
+    "e.sk.co":"SK Telecom",
+    "e.sk.lead":"Grew AI speaker 'NUGU' market share from 18 to 26%",
+    "e.sk.p1.t":"'NUGU' product strategy and CUI design",
+    "e.sk.p1.c":"At a time when conversational AI had no established standard, I <b>set the bar for persona and dialogue scenarios myself</b> and used a national event as leverage to push share up.",
+    "e.sk.p1.b":'<span class="badge">share +8%p</span><span class="badge">first LBS ad in Korea</span>',
+    "e.sk.p1.l1":'<span class="tag">Persona</span>Defined NUGU\'s service identity, persona, and tone, and built the standard for its speech system and UX scenarios.',
+    "e.sk.p1.l2":'<span class="tag">Olympics</span>Planned a PyeongChang 2018 Winter Olympics AI service and tied it to marketing, lifting NUGU\'s market share from 18% to 26%.',
+    "e.sk.p1.l3":'<span class="tag">Monetize</span>Designed a T map voice service and Korea\'s first vehicle location-based advertising model.',
+
+    /* ---- World Cup Bid ---- */
+    "e.wc.co":"2022 World Cup Bid Committee",
+    "e.wc.lead":"Global PR and governance for a nation-scale mega event",
+    "e.wc.p1.t":"World Cup bid strategy and global governance",
+    "e.wc.p1.c":"For the 2022 World Cup bid I <b>worked across Switzerland, the UK, and South Africa, handling global media and top-level governance</b>, running the field side of a nation-scale project.",
+    "e.wc.p1.b":'<span class="badge">FIFA selection day</span><span class="badge">London conference</span><span class="badge">global media</span>',
+    "e.wc.p1.l1":'<span class="tag">On-site</span>Deployed to the FIFA host-selection event in Zurich as a press officer for the Korean delegation, supporting the official spokesperson and running press-release distribution and media support worldwide.',
+    "e.wc.p1.l2":'<span class="tag">Conference</span>Owned Korea\'s booth at the "Leaders in Football" conference in London end to end, briefing global football executives and business leaders on the bid vision.',
+    "e.wc.p1.l3":'<span class="tag">Content</span>Led ambassador casting (Park Ji-sung, Kang Sue-jin, Park Tae-hwan) and ad production, and tied a bid-support film to the 2010 South Africa World Cup street cheering to build nationwide momentum.',
+
+    /* ---- KFA ---- */
+    "e.kfa.co":"Korea Football Association",
+    "e.kfa.lead":"National-team branding and nationwide youth-league operations",
+    "e.kfa.p1.t":"Mascot 'Baekho' and league administration",
+    "e.kfa.p1.c":"I <b>owned the national team's symbol mascot 'Baekho' from the concept stage</b> and ran operations and budget administration for the nationwide school leagues, laying my foundation in sports administration.",
+    "e.kfa.p1.b":'<span class="badge">mascot \'Baekho\' launch</span><span class="badge">national league ops</span>',
+    "e.kfa.p1.l1":'<span class="tag">Branding</span>Owned the full process for "Baekho", a mascot reflecting the national team\'s identity, from detailed concept to design review, production, and on-site use.',
+    "e.kfa.p1.l2":'<span class="tag">League</span>As operations lead for the nationwide school football leagues, ran large-scale funding, budget management, and a transparent expense process.',
+    "e.kfa.p1.l3":'<span class="tag">PR</span>To raise amateur-league awareness, planned a celebrity ambassador program (girl group Dal Shabet) and brought the mascot on-site for spectator-friendly branding.',
+
+    /* ---- Timeline ---- */
+    "tl.ds.y":"2025 — Present",
+    "tl.ds.co":"DeepSales",
+    "tl.ds.r":"Leading the build and launch of AI sales agent 'Selly' and a company-wide shift to AI workflows.",
+    "tl.cd.co":"Creative Design Lab",
+    "tl.cd.r":"Reported to the founder to launch a new service MVP and support its market entry.",
+    "tl.wt.r":"Led smart-logistics DX on a digital twin, driving 8B KRW/yr in savings and global PoCs.",
+    "tl.lp.co":"loplat",
+    "tl.lp.r":"Advanced a location-data B2B solution and launched a new service on a 1M-user base.",
+    "tl.bs.co":"Barunsesang Hospital",
+    "tl.bs.r":"Introduced a healthcare ERP and streamlined hospital supply and operating processes.",
+    "tl.sk.co":"SK Telecom",
+    "tl.sk.r":"Designed AI speaker persona and CUI; a PyeongChang Olympics service pushed market share up.",
+    "tl.sh.co":"Seoul Housing & Communities Corp.",
+    "tl.sh.r":"Managed public rental-housing assets and optimized housing-welfare service processes.",
+    "tl.pr.co":"Param Interactive",
+    "tl.pr.r":"First to design a K League mobile matchday service; validated demand with 91% fan approval.",
+    "tl.kfa.co":"Korea Football Association",
+    "tl.kfa.r":"From designing the national-team mascot 'Baekho' to running the nationwide school leagues, building a base in sports administration and branding.",
+    "tl.wc.co":"2022 World Cup Bid Committee",
+    "tl.wc.r":"Press response at the FIFA host selection in Zurich, the 'Leaders in Football' conference in London, and field work at the South Africa World Cup. Governance experience aligning government bodies and global institutions.",
+
+    /* ---- Contact / Modal / Footer ---- */
+    "contact.h2":"The next impact, <em>built together</em>",
+    "contact.sub":"Whether it's owning the metrics of a live product or building a new one from zero, I'll pull my weight fast, right where I land.",
+    "contact.btn":"View contact",
+    "modal.title":"Contact",
+    "footer":"© 2026 Chankun Lee — Product Manager",
+
+    /* ---- Chatbot static ---- */
+    "cbot.bubble.t":"Curious about Chankun Lee?",
+    "cbot.bubble.s":"Hiring questions or small curiosities, leave a note and I'll pass it straight along!",
+    "cbot.name":"Felix",
+    "cbot.status":"Chankun Lee's AI assistant",
+    "cbot.f.name":"Name / Company",
+    "cbot.f.name.ph":"Jane Doe or Acme Inc.",
+    "cbot.f.contact":"Contact",
+    "cbot.f.contact.ph":"Email or phone",
+    "cbot.f.msg":"Message",
+    "cbot.f.msg.ph":"Type your message here",
+    "cbot.send":"Send to Chankun Lee"
+  };
+
+  // 한국어 메일 subject vs 영문
+  var MAIL = {
+    ko:"mailto:leeckv@naver.com?subject=%5B%EC%B1%84%EC%9A%A9%20%EB%AC%B8%EC%9D%98%5D%20PM%20%EC%9D%B4%EC%B0%AC%EA%B7%BC%EB%8B%98%EA%BB%98",
+    en:"mailto:leeckv@naver.com?subject=Inquiry%20for%20Chankun%20Lee%20(Product%20Manager)"
+  };
+
+  var KO_CACHE = {}; // 최초 한국어 원문 저장
+  function cacheKO(){
+    document.querySelectorAll('[data-i18n],[data-i18n-html],[data-i18n-ph]').forEach(function(el){
+      if(el.hasAttribute('data-i18n')) KO_CACHE['t:'+el.getAttribute('data-i18n')]=el.textContent;
+      if(el.hasAttribute('data-i18n-html')) KO_CACHE['h:'+el.getAttribute('data-i18n-html')]=el.innerHTML;
+      if(el.hasAttribute('data-i18n-ph')) KO_CACHE['p:'+el.getAttribute('data-i18n-ph')]=el.getAttribute('placeholder');
+    });
+  }
+
+  window.__cbotLang='ko';
+
+  function apply(lang){
+    window.__cbotLang=lang;
+    var en = lang==='en';
+    document.documentElement.setAttribute('lang', en?'en':'ko');
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var k=el.getAttribute('data-i18n');
+      el.textContent = en ? (EN[k]!=null?EN[k]:el.textContent) : (KO_CACHE['t:'+k]!=null?KO_CACHE['t:'+k]:el.textContent);
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(function(el){
+      var k=el.getAttribute('data-i18n-html');
+      el.innerHTML = en ? (EN[k]!=null?EN[k]:el.innerHTML) : (KO_CACHE['h:'+k]!=null?KO_CACHE['h:'+k]:el.innerHTML);
+    });
+    document.querySelectorAll('[data-i18n-ph]').forEach(function(el){
+      var k=el.getAttribute('data-i18n-ph');
+      el.setAttribute('placeholder', en ? (EN[k]||'') : (KO_CACHE['p:'+k]||''));
+    });
+    // title
+    document.title = en ? EN['meta.title'] : '판을 읽고 답을 실행한다 - PM / 이찬근';
+    // 메일 버튼
+    var mailBtn=document.querySelector('a.btn-ghost[href^="mailto"]');
+    if(mailBtn) mailBtn.setAttribute('href', MAIL[lang]);
+    // 토글 active
+    var kb=document.getElementById('langKo'), eb=document.getElementById('langEn');
+    if(kb&&eb){kb.classList.toggle('active',!en);eb.classList.toggle('active',en);
+      kb.setAttribute('aria-pressed',String(!en));eb.setAttribute('aria-pressed',String(en));}
+    try{localStorage.setItem('ckpf_lang',lang);}catch(e){}
+    // 챗봇에 알림
+    document.dispatchEvent(new CustomEvent('ckpf:lang',{detail:lang}));
+  }
+
+  cacheKO();
+  var saved='ko';
+  try{var s=localStorage.getItem('ckpf_lang'); if(s==='en'||s==='ko') saved=s;}catch(e){}
+  // URL ?lang=en 우선
+  var qs=(location.search.match(/[?&]lang=(en|ko)/)||[])[1];
+  if(qs) saved=qs;
+
+  document.addEventListener('DOMContentLoaded',function(){
+    var kb=document.getElementById('langKo'), eb=document.getElementById('langEn');
+    if(kb) kb.addEventListener('click',function(){apply('ko');});
+    if(eb) eb.addEventListener('click',function(){apply('en');});
+    apply(saved);
+  });
+  // 즉시 1회 적용(토글 깜빡임 방지). DOMContentLoaded 전이라도 현재까지 파싱된 요소에 적용됨.
+  apply(saved);
+  window.__ckpfApplyLang=apply;
+})();
+
+/* ============ main ============ */
 (function(){
   document.body.classList.add('js-anim');
   var nav=document.getElementById('nav');
@@ -802,6 +1046,34 @@
   // 챗봇 (Formspree 연동)
   (function(){
     var FORM_ID='xkolzdwl';
+    function cbotT(){
+      var en = window.__cbotLang==='en';
+      return en ? {
+        g1:"Hi! I'm Felix, here to help on behalf of Chankun Lee.",
+        g2:"Leave a hiring question or anything you're curious about, and I'll pass it straight to Chankun.",
+        g3:"Just drop your name, contact, and message below.",
+        confirm:function(name,contact){return "Got it. "+name+", your contact is "+contact+", correct?";},
+        sending:"Sending it over to Chankun right now. One sec!",
+        done:function(contact){return "Sent. Once Chankun reviews it, he'll reach out to you directly at "+contact+" soon.";},
+        thanks:"Thanks for your interest. Hope this turns into something good!",
+        errServer:"Hmm, something went wrong sending that. Could you email leeckv@naver.com directly?",
+        errNet:"Network hiccup, the message didn't go through. Please reach Chankun directly at leeckv@naver.com.",
+        endBtn:"End chat",
+        subject:function(name){return "[Portfolio chatbot] Inquiry from "+name;}
+      } : {
+        g1:"안녕하세요! 이찬근 PM을 대신해 상담을 도와드리는 상담냥이에요.",
+        g2:"채용 문의나 궁금한 점을 남겨주시면, 이찬근 PM에게 바로 전달해드릴게요!",
+        g3:"아래에 이름, 연락처, 메시지를 적어주시면 됩니다.",
+        confirm:function(name,contact){return "네, 말씀 주신 내용 확인했어요. "+name+"님, 연락처는 "+contact+" 맞으시죠?";},
+        sending:"이찬근 PM에게 지금 바로 전달하고 있어요. 잠시만요!",
+        done:function(contact){return "전달 완료되었습니다. 이찬근 PM이 내용을 확인한 뒤 "+contact+"(으)로 빠른 시일 내에 직접 연락드릴게요.";},
+        thanks:"관심 가져주셔서 감사합니다. 좋은 인연으로 이어지길 기대할게요!",
+        errServer:"앗, 전달 중 문제가 생겼어요. 번거로우시겠지만 leeckv@naver.com으로 직접 메일 주시겠어요?",
+        errNet:"앗, 네트워크 문제로 전달이 안 됐어요. leeckv@naver.com으로 직접 연락 부탁드릴게요.",
+        endBtn:"상담 종료하기",
+        subject:function(name){return "[포트폴리오 챗봇] "+name+"님의 상담 문의";}
+      };
+    }
     var launcher=document.getElementById('cbotLauncher'),
         panel=document.getElementById('cbotPanel'),
         closeB=document.getElementById('cbotClose'),
@@ -875,9 +1147,10 @@
     }
 
     function runGreeting(){
-      botThenType('안녕하세요! 이찬근 PM을 대신해 상담을 도와드리는 상담냥이에요.',function(){
-        botThenType('채용 문의나 궁금한 점을 남겨주시면, 이찬근 PM에게 바로 전달해드릴게요!',function(){
-          botThenType('아래에 이름, 연락처, 메시지를 적어주시면 됩니다.');
+      var L=cbotT();
+      botThenType(L.g1,function(){
+        botThenType(L.g2,function(){
+          botThenType(L.g3);
         });
       });
     }
@@ -901,26 +1174,27 @@
       sendBtn.disabled=true;
 
       // 2) 상담냥이 입력 정보를 요약해 확인
-      botThenType('네, 말씀 주신 내용 확인했어요. ' + name + '님, 연락처는 ' + contact + ' 맞으시죠?', function(){
-        botThenType('이찬근 PM에게 지금 바로 전달하고 있어요. 잠시만요!', function(){
+      var L=cbotT();
+      botThenType(L.confirm(name,contact), function(){
+        botThenType(L.sending, function(){
 
           // 3) Formspree 전송
           fetch('https://formspree.io/f/'+FORM_ID,{
             method:'POST',
             headers:{'Accept':'application/json'},
-            body:(function(){var fd=new FormData();fd.append('이름',name);fd.append('연락처',contact);fd.append('메시지',message);fd.append('_subject','[포트폴리오 챗봇] '+name+'님의 상담 문의');return fd;})()
+            body:(function(){var fd=new FormData();fd.append('이름',name);fd.append('연락처',contact);fd.append('메시지',message);fd.append('_subject',L.subject(name));return fd;})()
           }).then(function(res){
             if(res.ok){
-              botThenType('전달 완료되었습니다. 이찬근 PM이 내용을 확인한 뒤 ' + contact + '(으)로 빠른 시일 내에 직접 연락드릴게요.', function(){
-                botThenType('관심 가져주셔서 감사합니다. 좋은 인연으로 이어지길 기대할게요!', endConversation);
+              botThenType(L.done(contact), function(){
+                botThenType(L.thanks, endConversation);
               });
             }else{
               sendBtn.disabled=false;
-              botThenType('앗, 전달 중 문제가 생겼어요. 번거로우시겠지만 leeckv@naver.com으로 직접 메일 주시겠어요?');
+              botThenType(L.errServer);
             }
           }).catch(function(){
             sendBtn.disabled=false;
-            botThenType('앗, 네트워크 문제로 전달이 안 됐어요. leeckv@naver.com으로 직접 연락 부탁드릴게요.');
+            botThenType(L.errNet);
           });
 
         });
@@ -934,7 +1208,7 @@
       sendBtn.type='button';
       form.classList.add('done');
       sendBtn.classList.add('end');
-      sendBtn.querySelector('.cbot-send-label').textContent='상담 종료하기';
+      sendBtn.querySelector('.cbot-send-label').textContent=cbotT().endBtn;
       var svg=sendBtn.querySelector('svg');if(svg)svg.style.display='none';
       sendBtn.addEventListener('click',closePanel);
     }
