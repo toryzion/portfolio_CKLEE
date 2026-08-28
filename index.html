@@ -143,6 +143,7 @@
   .exp-body-inner{padding:0 30px;}
   .exp-pad{padding:4px 0 30px;border-top:1px solid var(--line);}
   .exp-grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:30px;}
+  .exp-grid-2 .proj-full{grid-column:1 / -1;margin-top:8px;padding-top:30px;border-top:1px solid var(--line);}
   .proj{margin-top:24px;}
   .proj-title{font-size:1.02rem;font-weight:700;margin-bottom:8px;letter-spacing:-0.01em;color:var(--ink);}
   .proj-context{font-size:0.92rem;color:var(--ink-2);line-height:1.65;margin-bottom:14px;}
@@ -464,6 +465,27 @@
                 <li data-i18n-html="e.ds.p2.l3"><span class="tag">설계</span>Next.js, PostgreSQL, n8n, OpenRouter 기반 하이브리드 아키텍처 수립. 3단계 구독 티어 Pricing과 Toss Payments, Stripe 연동 리딩.</li>
               </ul>
             </div>
+          </div>
+          <div class="proj proj-full">
+            <div class="proj-title" data-i18n="e.ds.p3.t">원스톱 세일즈 자동화, URL 한 줄에서 캠페인까지</div>
+            <p class="proj-context" data-i18n-html="e.ds.p3.c">리드 추출과 캠페인 생성, CRM 관리로 흩어져 있던 복잡한 세일즈 과정을, <b>회사 홈페이지 URL 한 줄 입력만으로 끝나는 원스톱 자동화 시스템</b>으로 재설계했습니다. 사용자가 손이 많이 가던 작업을 한 번의 실행으로 끝내도록 만들었습니다.</p>
+            <div class="badges" data-i18n-html="e.ds.p3.b"><span class="badge">URL to Campaign</span><span class="badge">ICP 자동 추론</span><span class="badge">6,000만+ 기업 DB</span></div>
+            <ul>
+              <li data-i18n-html="e.ds.p3.l1"><span class="tag">기획</span>회사 정보와 홈페이지 URL 입력만으로 해당 기업의 ICP를 추론하고, 잠재 바이어 스크리닝부터 타겟 리드 추출, 세일즈 캠페인 생성까지 한 흐름으로 이어지는 원스톱 자동화를 기획하고 구축.</li>
+              <li data-i18n-html="e.ds.p3.l2"><span class="tag">데이터</span>6,000만 개 이상의 글로벌 기업 DB와 연동해 잠재 바이어(ICP)를 실시간으로 스크리닝하고 타겟팅하는 데이터 필터링 로직을 설계.</li>
+              <li data-i18n-html="e.ds.p3.l3"><span class="tag">안정성</span>자율 구동 AI의 리스크(환각 등)를 제어하기 위한 인간 개입 승인 구조(Human-in-the-loop)와 이탈 방지 가드레일 시퀀스를 설계해 기업용 SaaS 수준의 안정성을 확보.</li>
+            </ul>
+          </div>
+          <div class="proj proj-full">
+            <div class="proj-title" data-i18n="e.ds.p4.t">시장별 제품 이원화, 국내와 글로벌 전략 분리</div>
+            <p class="proj-context" data-i18n-html="e.ds.p4.c">같은 제품이라도 시장의 성숙도가 다르면 전략도 달라야 한다고 봤습니다. <b>국내와 글로벌 사용자의 CRM 이해도 차이에 맞춰 제품 방향을 이원화</b>하고, 글로벌 버전의 핵심 기능을 직접 리딩했습니다.</p>
+            <div class="badges" data-i18n-html="e.ds.p4.b"><span class="badge">국내 vs 글로벌 이원화</span><span class="badge">미국 지사 근무</span><span class="badge">투자 유치 지원</span></div>
+            <ul>
+              <li data-i18n-html="e.ds.p4.l1"><span class="tag">국내</span>SaaS와 CRM 툴에 대한 이해도가 낮은 국내 사용자를 겨냥해, Selly가 리드를 채워주고 메일 발송부터 CRM 관리까지 전부 대신하는 'AI 영업 팀장' 컨셉으로 기획.</li>
+              <li data-i18n-html="e.ds.p4.l2"><span class="tag">글로벌</span>이미 리드를 확보하고 CRM에 익숙한 북미 사용자를 겨냥해, 전통적인 CRM 워크플로우에 AI를 보조 수단으로 얹는 방향으로 기획하고 구현.</li>
+              <li data-i18n-html="e.ds.p4.l3"><span class="tag">기능</span>LLM 프롬프팅을 활용한 메일 시퀀스 발송, CRM 파이프라인 관리, 자동 답장, 미팅 녹화와 미팅 내용 분석까지 글로벌 버전의 핵심 기능을 프로젝트 리딩.</li>
+              <li data-i18n-html="e.ds.p4.l4"><span class="tag">확장</span>이 결과물을 바탕으로 미국 지사 근무와 투자사 유치 활동을 지원.</li>
+            </ul>
           </div>
         </div></div></div>
       </div>
@@ -817,6 +839,19 @@
     "e.ds.p2.l1":'<span class="tag">Shift</span>Rolled out a Claude + Gemini multi-LLM workflow company-wide, cutting planning and operations lead time by about 60%.',
     "e.ds.p2.l2":'<span class="tag">Automate</span>Connected Claude\'s reasoning with Base44\'s live rendering to generate interactive UI the moment a PRD is written.',
     "e.ds.p2.l3":'<span class="tag">Architect</span>Set up a hybrid architecture on Next.js, PostgreSQL, n8n, and OpenRouter, and led the three-tier subscription pricing plus Toss Payments and Stripe integration.',
+    "e.ds.p3.t":"One-stop sales automation, from a URL to a campaign",
+    "e.ds.p3.c":"I redesigned a sales process that was scattered across lead sourcing, campaign creation, and CRM into <b>a one-stop automation that runs from a single company URL</b>. What used to take a lot of manual work now finishes in one run.",
+    "e.ds.p3.b":'<span class="badge">URL to campaign</span><span class="badge">auto ICP inference</span><span class="badge">60M+ company DB</span>',
+    "e.ds.p3.l1":'<span class="tag">Design</span>Built a one-stop flow where a company name and homepage URL alone infer the account\'s ICP, then carry through buyer screening, targeted lead sourcing, and sales-campaign generation in a single pass.',
+    "e.ds.p3.l2":'<span class="tag">Data</span>Designed the data-filtering logic that screens and targets potential buyers (ICP) in real time against a database of 60M+ companies.',
+    "e.ds.p3.l3":'<span class="tag">Reliability</span>Designed a human-in-the-loop approval structure and guardrail sequences to contain autonomous-AI risk (hallucination and the like), securing enterprise-SaaS-grade stability.',
+    "e.ds.p4.t":"Two products for two markets: splitting the domestic and global strategy",
+    "e.ds.p4.c":"Even for the same product, a different market maturity calls for a different strategy. I <b>split the product direction along the gap in CRM literacy between domestic and global users</b>, and personally led the core features of the global version.",
+    "e.ds.p4.b":'<span class="badge">domestic vs global split</span><span class="badge">US office</span><span class="badge">fundraising support</span>',
+    "e.ds.p4.l1":'<span class="tag">Domestic</span>For Korean users with lower SaaS and CRM literacy, framed Selly as an "AI sales lead" that fills the pipeline and handles everything from email sending to CRM management on the user\'s behalf.',
+    "e.ds.p4.l2":'<span class="tag">Global</span>For North American users who already source their own leads and know CRM well, designed and built the product to layer AI onto a traditional CRM workflow as an assistive tool rather than a replacement.',
+    "e.ds.p4.l3":'<span class="tag">Features</span>Led the global version\'s core features: LLM-prompted email sequencing, CRM pipeline management, auto-replies, and meeting recording with conversation analysis.',
+    "e.ds.p4.l4":'<span class="tag">Growth</span>Used the outcome to support the US-office expansion and investor fundraising.',
 
     /* ---- Creative Design Lab ---- */
     "e.cd.co":"Creative Design Lab",
