@@ -197,6 +197,7 @@
   .exp-grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:34px;}
   .exp-grid-2 .proj-full,.proj-full{grid-column:1 / -1;margin-top:10px;padding-top:28px;border-top:1px solid var(--line);}
   .proj{margin-top:24px;}
+  .exp-note{font-size:0.86rem;color:var(--ink-3);padding:18px 0 0;line-height:1.6;}
   .proj-title{font-size:1rem;font-weight:600;margin-bottom:8px;letter-spacing:-0.03em;color:var(--ink);}
   .proj-context{font-size:0.9rem;color:var(--ink-2);line-height:1.7;margin-bottom:14px;}
   .exp-grid-2 .proj-context{min-height:76px;}
@@ -527,6 +528,7 @@
     .timeline{break-inside:avoid;}
     .proj li{break-inside:avoid;orphans:2;widows:2;}
     .proj-full,.exp-grid-2 .proj-full{margin-top:11px;padding-top:11px;}
+    .exp-note{font-size:11px;padding:0 0 2px;}
     .proj-title{font-size:13px;}
     .proj-context{font-size:11.5px;margin-bottom:8px;line-height:1.65;}
     .badge{font-size:10.5px;padding:2px 7px;}
@@ -613,7 +615,7 @@
           <a class="ui-row" href="#experience" data-proj="e.ds.p3"><span class="p" data-i18n="ui.r4.p">AI 세일즈 에이전트</span><span class="res" data-i18n="ui.r4.res">URL 한 줄에서 ICP 추론과 캠페인 시퀀스 생성까지 자동화</span><span class="co"><span class="ui-chip live" data-i18n="ui.r4.co">DeepSales</span></span></a>
           <a class="ui-row" href="#experience" data-proj="e.ds.p2"><span class="p" data-i18n="ui.r5.p">v1 제품 전체 설계</span><span class="res" data-i18n="ui.r5.res">135일 기준 유료 고객 41개사, 누적 매출 4.95억</span><span class="co"><span class="ui-chip live" data-i18n="ui.r5.co">DeepSales</span></span></a>
           <a class="ui-row" href="#experience" data-proj="e.cd.p1"><span class="p" data-i18n="ui.r6.p">플랫폼 리뉴얼</span><span class="res" data-i18n="ui.r6.res">B2B에서 B2C, B2G로 확장</span><span class="co"><span class="ui-chip prog" data-i18n="ui.r6.co">크디랩</span></span></a>
-          <a class="ui-row" href="#experience" data-proj="e.cd.p2"><span class="p" data-i18n="ui.r7.p">AI 세일즈 교육과 실시간 평가</span><span class="res" data-i18n="ui.r7.res">LLM 대화형 교육 세션 기획과 출시</span><span class="co"><span class="ui-chip prog" data-i18n="ui.r7.co">크디랩</span></span></a>
+          <a class="ui-row" href="#experience" data-proj="e.cd.p2"><span class="p" data-i18n="ui.r7.p">AI 세일즈 교육과 멀티모달 평가</span><span class="res" data-i18n="ui.r7.res">표정과 억양까지 반영한 LLM 교육, 평가 시스템</span><span class="co"><span class="ui-chip prog" data-i18n="ui.r7.co">크디랩</span></span></a>
           <a class="ui-row" href="#experience" data-proj="e.wt.p1"><span class="p" data-i18n="ui.r8.p">풀무원 푸드머스 디지털 트윈</span><span class="res" data-i18n="ui.r8.res">메인 PM으로 구축과 운영, 연 80억 규모 운영 효율화</span><span class="co"><span class="ui-chip won" data-i18n="ui.r8.co">WATA AI</span></span></a>
           <a class="ui-row" href="#experience" data-proj="e.wt.p2"><span class="p" data-i18n="ui.r9.p">주한미군 험프리스 캠프 물류 창고</span><span class="res" data-i18n="ui.r9.res">PoC를 매니징해 총액 70억 규모 수주 성공</span><span class="co"><span class="ui-chip won" data-i18n="ui.r9.co">WATA AI</span></span></a>
           <a class="ui-row" href="#experience" data-proj="e.wt.p3"><span class="p" data-i18n="ui.r10.p">글로벌 PoC</span><span class="res" data-i18n="ui.r10.res">두바이 경찰청, 싱가포르 DHL</span><span class="co"><span class="ui-chip won" data-i18n="ui.r10.co">WATA AI</span></span></a>
@@ -690,15 +692,15 @@
           <svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
         </button>
         <div class="exp-body"><div class="exp-body-inner"><div class="exp-pad">
+          <p class="exp-note" data-i18n="e.ds.note">딥세일즈는 2024년 5월 20억 원 규모 프리-A 투자를 유치한 세일즈 인텔리전스 스타트업입니다.</p>
           <div class="proj">
             <div class="proj-title" data-i18n="e.ds.p5.t">딥테크 TIPS 선정과 정부 R&D 과제</div>
-            <p class="proj-context" data-i18n-html="e.ds.p5.c">제품의 기술 경쟁력을 <b>외부 기관 심사로 입증해 15억 규모의 정부 R&D 자금을 확보</b>했습니다. 선정으로 끝나지 않고, 기술 고도화 과제를 제품 로드맵과 정합성 있게 연결하는 역할까지 맡았습니다.</p>
-            <div class="badges" data-i18n-html="e.ds.p5.b"><span class="badge">정부 R&D 15억</span><span class="badge">딥테크 TIPS 선정</span><span class="badge">기술 고도화 PM</span></div>
+            <p class="proj-context" data-i18n-html="e.ds.p5.c">제품의 기술 경쟁력을 <b>외부 기관 심사로 입증해 15억 규모의 정부 R&D 자금을 확보</b>했습니다. </p>
+            <div class="badges" data-i18n-html="e.ds.p5.b"><span class="badge">정부 R&D 15억</span><span class="badge">딥테크 TIPS 선정</span><span class="badge">사업계획서와 대면평가 총괄</span></div>
             <ul>
               <li data-i18n-html="e.ds.p5.l1"><span class="tag">선정</span>중소기업기술정보진흥원 딥테크 TIPS에 AI 세일즈 에이전트의 기술성을 입증해 최종 선정, 15억 규모의 정부 R&D 자금 확보에 기여.</li>
               <li data-i18n-html="e.ds.p5.l2"><span class="tag">총괄</span>사업계획서 작성부터 대면평가 발표까지 전 과정을 PM으로 총괄하며, 제품의 기술 경쟁력과 사업성을 심사 기준에 맞춰 구조화.</li>
               <li data-i18n-html="e.ds.p5.l3"><span class="tag">연결</span>제품 로드맵과 정부 과제의 기술 고도화 목표를 정합성 있게 연결해, 해외 바이어 구매 의도 파악 고도화라는 핵심 과제 방향을 정의.</li>
-              <li data-i18n-html="e.ds.p5.l4"><span class="tag">운영</span>선정 이후 기술 리뷰 대응 PM으로서 마일스톤 일정 산출, 기술 근거 자료조사, 액션 아이템 정의와 유관 부서 배분을 담당.</li>
             </ul>
           </div>
           <div class="proj proj-full">
@@ -729,6 +731,7 @@
                 <li data-i18n-html="e.ds.p3.l1"><span class="tag">기획</span>회사 정보와 홈페이지 URL 입력만으로 해당 기업의 ICP를 추론하고, 잠재 바이어 스크리닝부터 타겟 리드 추출, 캠페인 시퀀스 생성까지 한 흐름으로 이어지는 자동화를 기획하고 구축.</li>
                 <li data-i18n-html="e.ds.p3.l2"><span class="tag">데이터</span>6,000만 개 이상의 글로벌 기업 DB와 연동해 잠재 바이어(ICP)를 실시간으로 스크리닝하고 타겟팅하는 데이터 필터링 로직을 설계.</li>
                 <li data-i18n-html="e.ds.p3.l3"><span class="tag">안정성</span>자율 구동 AI의 리스크(환각 등)를 제어하기 위한 인간 개입 승인 구조(Human-in-the-loop)와 이탈 방지 가드레일 시퀀스를 설계해 기업용 SaaS 수준의 안정성을 확보.</li>
+                <li data-i18n-html="e.ds.p3.l5"><span class="tag">예외 설계</span>홈페이지가 없거나 정보가 비어 있거나 추론을 신뢰하기 어려운 기업이 계속 나옵니다. 성공 경로만 설계하면 에이전트는 실패를 사용자에게 떠넘깁니다. 단계마다 다음으로 넘어갈 최소 조건을 정하고 그 아래면 멈추고 사람에게 묻도록 했습니다.</li>
                 <li data-i18n-html="e.ds.p3.l4"><span class="tag">런칭</span>AI Agent 프로덕트로 전환해 직접 런칭했고, 초기 고객사 52곳을 확보했습니다. 연매출은 약 11억 원에서 약 50억 원 규모로 약 5배 성장했습니다.</li>
             </ul>
           </div>
@@ -748,7 +751,7 @@
 
       <div class="exp reveal">
         <button class="exp-head" aria-expanded="false">
-          <div class="ht"><div class="co" data-i18n="e.cd.co">크디랩</div><div class="exp-lead" data-i18n="e.cd.lead">대표 직속으로 플랫폼 리뉴얼과 AI 세일즈 교육 신규 기능 출시</div></div>
+          <div class="ht"><div class="co" data-i18n="e.cd.co">크디랩</div><div class="exp-lead" data-i18n="e.cd.lead">대표 직속으로 플랫폼 리뉴얼과 멀티모달 AI 평가 시스템 출시</div></div>
           <div class="meta">2025.05 ~ 2025.07<br>PM Lead</div>
           <svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
         </button>
@@ -765,12 +768,14 @@
             </ul>
           </div>
           <div class="proj proj-full">
-            <div class="proj-title" data-i18n="e.cd.p2.t">AI 세일즈 교육 세션과 실시간 평가 시스템</div>
-            <p class="proj-context" data-i18n-html="e.cd.p2.c">AI 프롬프트와 LLM으로 대화하며 <b>언제 어디서든 세일즈 역량을 키우는 교육 세션</b>과 실시간 평가 시스템을 신규 기능으로 기획하고 출시했습니다.</p>
-            <div class="badges" data-i18n-html="e.cd.p2.b"><span class="badge">신규 기능 출시</span><span class="badge">LLM 대화형 교육</span><span class="badge">실시간 평가</span></div>
+            <div class="proj-title" data-i18n="e.cd.p2.t">AI 세일즈 교육과 멀티모달 평가 시스템</div>
+            <p class="proj-context" data-i18n-html="e.cd.p2.c">LLM 대화 기반 세일즈 역량 교육 세션과 실시간 평가 시스템을 신규 기능으로 기획해 출시했습니다. 모델은 이미 정해져 있었고, <b>무엇을 평가할지 정의하고 그 결과를 사용자가 고칠 수 있는 형태로 돌려주는 설계</b>를 맡았습니다.</p>
+            <div class="badges" data-i18n-html="e.cd.p2.b"><span class="badge">표정, 말투, 억양 반영</span><span class="badge">평가 세그먼트 설계</span><span class="badge">KB손해보험, 현대해상 데모</span></div>
             <ul>
-                <li data-i18n-html="e.cd.p2.l1"><span class="tag">교육</span>AI 프롬프트와 LLM을 활용한 대화형 세일즈 역량 강화 교육 세션을 기획하고 출시했습니다. 언제 어디서든 대화하며 연습할 수 있는 구조입니다.</li>
-                <li data-i18n-html="e.cd.p2.l2"><span class="tag">평가</span>대화를 바탕으로 인사이트를 제공하는 실시간 평가 시스템을 기획하고 출시했습니다.</li>
+                <li data-i18n-html="e.cd.p2.l1"><span class="tag">정의</span>세일즈는 무슨 말을 했는지보다 어떻게 말했는지가 결과를 가릅니다. 텍스트만으로 점수를 내지 않고 표정과 말투, 억양을 함께 반영하는 구조로 평가 기준을 정의했습니다.</li>
+                <li data-i18n-html="e.cd.p2.l2"><span class="tag">설계</span>총점을 주지 않았습니다. 80점은 학습자에게 아무것도 알려 주지 않기 때문입니다. 내용, 전달, 태도, 호흡의 네 신호와 오프닝, 니즈 파악, 제안, 클로징의 네 구간을 교차해 어느 지점에서 무엇이 약했는지를 짚도록 했습니다.</li>
+                <li data-i18n-html="e.cd.p2.l3"><span class="tag">경험</span>점수가 낮으면 학습자는 다시 들어오지 않습니다. 잘한 구간을 먼저 보여 주고 개선점은 하나만 짚는 순서로 결과 화면을 정의했습니다.</li>
+                <li data-i18n-html="e.cd.p2.l4"><span class="tag">확장</span>보험 세일즈 교육으로 출발했지만 평가 축은 그대로 두고 기준만 교체하면 고객 응대에도 쓰인다고 판단해, 산업별로 따로 만들지 않고 공통 구조로 정리했습니다.</li>
             </ul>
           </div>
         </div></div></div>
@@ -866,9 +871,10 @@
           <div class="proj">
             <div class="proj-title" data-i18n="e.sk.p1.t">AI 서비스 'NUGU' 제품 전략과 CUI 설계</div>
             <p class="proj-context" data-i18n-html="e.sk.p1.c">대화형 AI 서비스의 초기 표준이 없던 시기에 <b>페르소나와 발화 시나리오의 기준을 직접 정립</b>하고, 국가적 이벤트에 맞춘 서비스를 기획했습니다.</p>
-            <div class="badges" data-i18n-html="e.sk.p1.b"><span class="badge">점유율 18%에서 26%</span><span class="badge">페르소나 설계</span><span class="badge">발화 품질 검증</span></div>
+            <div class="badges" data-i18n-html="e.sk.p1.b"><span class="badge">점유율 18%에서 26%</span><span class="badge">대화형 AI 표준 정립</span><span class="badge">실패 유형 설계</span></div>
             <ul>
-                <li data-i18n-html="e.sk.p1.l1"><span class="tag">페르소나</span>AI 스피커 NUGU의 서비스 정체성과 페르소나, 톤앤매너를 설계. 발화 시스템과 UX 시나리오의 표준을 구축.</li>
+                <li data-i18n-html="e.sk.p1.l1"><span class="tag">페르소나</span>참고할 사례가 없어 NUGU의 서비스 정체성과 톤앤매너를 정의하는 것부터 시작했습니다. 발화 시스템과 UX 시나리오의 표준을 구축했습니다.</li>
+                <li data-i18n-html="e.sk.p1.l5"><span class="tag">실패 설계</span>음성 서비스는 못 알아듣는 것과 잘못 알아듣는 것의 성격이 다릅니다. 앞은 사용자가 다시 말하면 되지만 뒤는 틀린 줄도 모르고 넘어갑니다. 인식 실패, 의도 오해, 정보 부재를 나눠 각각 다른 응답 패턴을 정의하고, 모를 때는 둘러대지 않고 모른다고 답하게 했습니다.</li>
                 <li data-i18n-html="e.sk.p1.l2"><span class="tag">올림픽</span>2018 평창 동계 올림픽 특화 AI 서비스를 기획하고 마케팅과 연계했습니다. 그 기간 NUGU의 국내 시장 점유율은 18%에서 26%로 올랐습니다.</li>
                 <li data-i18n-html="e.sk.p1.l3"><span class="tag">분석</span>NUGU와 일정 앱의 유저 행동 로그와 VOC를 분석해 이탈 구간을 찾고, 핵심 기능의 우선순위를 다시 정했습니다.</li>
                 <li data-i18n-html="e.sk.p1.l4"><span class="tag">품질</span>대화형 NUGU의 발화 시스템 테스트를 전담해 음성 인식률과 응답 정확도 검증 프로세스를 이끌고, 경쟁사 서비스와 품질을 비교 분석했습니다.</li>
@@ -945,7 +951,7 @@
       </div>
       <div class="skillcard reveal">
         <div class="sh"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div><h4>Data</h4></div>
-        <div class="chips"><span class="chip">SQL</span><span class="chip">Google Analytics</span><span class="chip">Amplitude</span><span class="chip">Power BI</span><span class="chip" data-i18n="skill.data.log">로그 분석</span></div>
+        <div class="chips"><span class="chip">SQL</span><span class="chip">Google Analytics</span><span class="chip">Amplitude</span><span class="chip">Power BI</span><span class="chip" data-i18n="skill.data.log">로그 분석</span><span class="chip" data-i18n="skill.data.eval">평가 지표 설계</span></div>
       </div>
       <div class="skillcard reveal">
         <div class="sh"><div class="ic"><svg viewBox="0 0 24 24"><path d="M13 3 4 14h6l-1 7 9-11h-6z"/></svg></div><h4>Build</h4></div>
@@ -1136,8 +1142,8 @@
     "ui.r6.p":"Platform renewal",
     "ui.r6.res":"Expanded from B2B into B2C and B2G",
     "ui.r6.co":"Creative Design Lab",
-    "ui.r7.p":"AI sales training and live evaluation",
-    "ui.r7.res":"Planned and shipped LLM conversational training sessions",
+    "ui.r7.p":"AI sales training and multimodal evaluation",
+    "ui.r7.res":"LLM training that reads facial expression and prosody",
     "ui.r7.co":"Creative Design Lab",
     "ui.r8.p":"Pulmuone Foodmerce digital twin",
     "ui.r8.res":"Main PM for build and operations; about $6M a year in efficiency scale",
@@ -1183,6 +1189,7 @@
     "sec.skills.t":"Skills and tools",
     "sec.skills.s":"Planning, data, and external-integration design, all hands-on.",
     "skill.data.log":"Log analysis",
+    "skill.data.eval":"Evaluation metrics",
     "skill.prod.1":"Policy docs",
     "skill.prod.2":"Screen specs",
     "skill.comm.1":"Stakeholder alignment",
@@ -1230,6 +1237,7 @@
     "e.ds.p3.l1":"<span class=\"tag\">Design</span>Built a flow where a company name and homepage URL alone infer the account's ICP, then carry through buyer screening, targeted lead sourcing, and campaign-sequence generation in a single pass.",
     "e.ds.p3.l2":"<span class=\"tag\">Data</span>Designed the data-filtering logic that screens and targets potential buyers (ICP) in real time against a database of 60M+ companies.",
     "e.ds.p3.l3":"<span class=\"tag\">Reliability</span>Designed a human-in-the-loop approval structure and guardrail sequences to contain autonomous-AI risk (hallucination and the like), securing enterprise-SaaS-grade stability.",
+    "e.ds.p3.l5":"<span class=\"tag\">Exceptions</span>Companies with no website, empty data, or low-confidence inference keep showing up. Design only the happy path and the agent pushes its failures onto the user. I set a minimum confidence bar at each step; below it, the agent stops and asks.",
     "e.ds.p4.t":"Two products for two markets: splitting the domestic and global strategy",
     "e.ds.p4.c":"Even for the same product, a different market maturity calls for a different strategy. I <b>split the product direction along the gap in CRM literacy between domestic and global users</b>, and personally led the core features of the global version.",
     "e.ds.p4.b":'<span class="badge">domestic vs global split</span><span class="badge">US office</span><span class="badge">fundraising support</span>',
@@ -1238,16 +1246,16 @@
     "e.ds.p4.l3":'<span class="tag">Features</span>Led the global version\'s core features: LLM-prompted email sequencing, CRM pipeline management, auto-replies, and meeting recording with conversation analysis.',
     "e.ds.p4.l4":'<span class="tag">Growth</span>Used the outcome to support the US-office expansion and investor fundraising.',
     "e.ds.p5.t":"Deep-Tech TIPS selection and government R&D grant",
-    "e.ds.p5.c":"I <b>proved the product's technical competitiveness through an external review and secured a 1.5B KRW government R&D grant</b>. It didn't end at selection; I also kept the R&D roadmap aligned with the product roadmap.",
-    "e.ds.p5.b":'<span class="badge">1.5B KRW R&D grant</span><span class="badge">Deep-Tech TIPS</span><span class="badge">R&D roadmap PM</span>',
+    "e.ds.p5.c":"I <b>proved the product's technical competitiveness through an external review and secured a 1.5B KRW government R&D grant</b>.",
+    "e.ds.p5.b":"<span class=\"badge\">KRW 1.5B R&D grant</span><span class=\"badge\">Deep-Tech TIPS</span><span class=\"badge\">led business plan and pitch</span>",
     "e.ds.p5.l1":"<span class=\"tag\">Selected</span>Won final selection for the Deep-Tech TIPS program (TIPA) by proving the technical merit of the AI sales agent, contributing to a 1.5B KRW government R&D grant.",
     "e.ds.p5.l2":'<span class="tag">Owned</span>Led the full process end to end as PM, from the proposal to the in-person review presentation, structuring the product\'s technical and commercial case to the evaluation criteria.',
     "e.ds.p5.l3":'<span class="tag">Aligned</span>Tied the R&D program\'s technical goals to the product roadmap, defining the core direction: deeper inference of overseas buyers\' purchase intent.',
-    "e.ds.p5.l4":"<span class=\"tag\">Operate</span>As PM for the post-selection technical reviews, I owned milestone scheduling, technical research, action-item definition, and cross-team distribution.",
+    "e.ds.p5.l4":'<span class="tag">Operate</span>As PM for the post-selection technical reviews, own milestone scheduling, technical research, action-item definition, and cross-team distribution.',
 
     /* ---- Creative Design Lab ---- */
     "e.cd.co":"Creative Design Lab",
-    "e.cd.lead":"Reported to the founder; renewed the platform and shipped an AI sales-training feature",
+    "e.cd.lead":"Reported to the founder; platform renewal and a multimodal AI evaluation system",
     "e.cd.p1.t":"Platform renewal and expansion from B2B into B2C and B2G",
     "e.cd.p1.c":"I <b>renewed the platform's service flow and information structure</b> and extended an enterprise-focused business into consumer and public-sector markets.",
     "e.cd.p1.b":"<span class=\"badge\">information structure renewal</span><span class=\"badge\">Hyundai Livart won</span><span class=\"badge\">key accounts renewed</span>",
@@ -1264,17 +1272,20 @@
     "e.wt.p1.l1":"<span class=\"tag\">Build</span>Built picking navigation and ESL digital-label infrastructure on the floor, and planned and refined the admin pages that digitize manual work.",
     "e.wt.p1.l2":"<span class=\"tag\">Deploy</span>Drove on-site deployment of autonomous forklifts and LiDAR vision as PM.",
     "e.wt.p1.l3":"<span class=\"tag\">Safety</span>Designed forklift dash-cam, LiDAR, and camera-based collision-detection and object-detection logic, and planned the tablet app screens for floor workers.",
+    "e.ds.note":"DeepSales is a sales-intelligence startup that raised a KRW 2B pre-Series A round in May 2024.",
     "e.ds.p3.l4":"<span class=\"tag\">Launch</span>Relaunched the product as an AI agent and landed 52 early customers. Annual revenue grew about 5x, from roughly $0.8M to $3.8M.",
     "e.ds.p6.l2":"<span class=\"tag\">Approach</span>Designed the renewal to roll out area by area in stages rather than all at once.",
     "e.ds.p6.l1":"<span class=\"tag\">Scope</span>Defined the revamp scope by area: auth, onboarding, billing, and the in-product screens.",
     "e.ds.p6.b":"<span class=\"badge\">incremental renewal</span><span class=\"badge\">auth and onboarding</span><span class=\"badge\">billing</span><span class=\"badge\">in-product screens</span>",
     "e.ds.p6.c":"I planned the v2 renewal, <b>revamping auth, onboarding, billing, and the in-product screens in stages</b>.",
     "e.ds.p6.t":"v2 renewal",
-    "e.cd.p2.l2":"<span class=\"tag\">Evaluate</span>Planned and shipped a real-time evaluation system that gives insights from the conversation.",
-    "e.cd.p2.l1":"<span class=\"tag\">Training</span>Planned and shipped conversational sales-skills training sessions built on AI prompts and an LLM, so reps can practice by talking, anytime and anywhere.",
-    "e.cd.p2.b":"<span class=\"badge\">new feature shipped</span><span class=\"badge\">LLM conversational training</span><span class=\"badge\">real-time evaluation</span>",
-    "e.cd.p2.c":"I planned and shipped, as a new feature, <b>conversational sales-training sessions built on AI prompts and an LLM that reps can use anytime, anywhere</b>, along with a real-time evaluation system.",
-    "e.cd.p2.t":"AI sales-training sessions and a real-time evaluation system",
+    "e.cd.p2.l2":"<span class=\"tag\">Design</span>I refused a single score. “80 points” tells a learner nothing. Four signals (content, delivery, manner, pacing) crossed with four stages (opening, discovery, pitch, closing) pinpoint where and what went weak.",
+    "e.cd.p2.l3":"<span class=\"tag\">Experience</span>A low score keeps people from coming back. I set the results screen to lead with what went well and raise exactly one thing to fix.",
+    "e.cd.p2.l4":"<span class=\"tag\">Extend</span>It began as insurance sales training, but keeping the evaluation axes and swapping only the criteria made it work for customer service, so I kept one shared structure instead of per-industry builds.",
+    "e.cd.p2.l1":"<span class=\"tag\">Define</span>In sales, how something is said decides the outcome more than what is said. Rather than scoring text alone, I defined criteria that read facial expression, tone, and prosody together.",
+    "e.cd.p2.b":"<span class=\"badge\">facial, tone, prosody signals</span><span class=\"badge\">evaluation segments</span><span class=\"badge\">demos to two insurers</span>",
+    "e.cd.p2.c":"I planned and shipped LLM-based sales training sessions with a real-time evaluation system. The model was already chosen; my part was <b>defining what to evaluate and turning the result into feedback a learner can act on</b>.",
+    "e.cd.p2.t":"AI sales training and multimodal evaluation",
     "e.cd.p1.l4":"<span class=\"tag\">Clients</span>Ran regular meetings and technical feedback loops with major clients such as Samsung Fire & Marine Insurance and SKT, and personally led service briefings and user-training presentations.",
     "e.sk.p2.l3":"<span class=\"tag\">Public</span>Built, with local governments, a service model that announces local festivals and public information in real time.",
     "e.sk.p2.l2":"<span class=\"tag\">Ads</span>Planned Korea's first vehicle location-based B2B and B2G advertising model, which announces nearby landmarks by voice as the car passes through an area.",
@@ -1323,8 +1334,9 @@
     "e.sk.lead":"Set the service standards for the NUGU AI speaker and planned its PyeongChang Olympics service",
     "e.sk.p1.t":"'NUGU' product strategy and CUI design",
     "e.sk.p1.c":"At a time when conversational AI had no established standard, I <b>set the bar for persona and dialogue scenarios myself</b> and planned a service built around a national event.",
-    "e.sk.p1.b":"<span class=\"badge\">share 18% to 26%</span><span class=\"badge\">persona design</span><span class=\"badge\">utterance-quality checks</span>",
-    "e.sk.p1.l1":"<span class=\"tag\">Persona</span>Defined NUGU's service identity, persona, and tone, and built the standard for its speech system and UX scenarios.",
+    "e.sk.p1.b":"<span class=\"badge\">share 18% to 26%</span><span class=\"badge\">set the CUI standard</span><span class=\"badge\">failure-mode design</span>",
+    "e.sk.p1.l1":"<span class=\"tag\">Persona</span>With no precedent to follow, I started by defining NUGU's service identity and tone, then built the standard for its speech system and UX scenarios.",
+    "e.sk.p1.l5":"<span class=\"tag\">Failure design</span>In voice, mishearing and misunderstanding are different problems: the first makes a user repeat themselves, the second slips by unnoticed. I split failures into recognition, intent, and missing-information cases with distinct response patterns, and made the assistant say it doesn't know rather than improvise.",
     "e.sk.p1.l2":"<span class=\"tag\">Olympics</span>Planned a PyeongChang 2018 Winter Olympics AI service and tied it to marketing. NUGU's domestic market share rose from 18% to 26% over that period.",
     "e.sk.p1.l3":"<span class=\"tag\">Analyze</span>Analyzed user behavior logs and VOC for NUGU and the schedule app to find drop-off points and reprioritize core features.",
     "e.sk.p1.l4":"<span class=\"tag\">Quality</span>Owned utterance-system testing for conversational NUGU, led the process for verifying speech-recognition rate and response accuracy, and benchmarked quality against competitors.",
